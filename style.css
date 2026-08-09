@@ -1,0 +1,1261 @@
+/* =====================================================
+   Y2K CRT PERSONAL OS
+   STYLE SYSTEM
+===================================================== */
+
+
+
+* {
+    box-sizing:border-box;
+}
+
+
+
+body {
+
+    margin:0;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    background:#001400;
+
+    color:#eaffea;
+
+    font-family:
+    "Press Start 2P",
+    monospace;
+
+    font-size:12px;
+
+}
+
+
+
+/* =====================================================
+   CRT OVERLAY
+===================================================== */
+
+
+.crt-overlay {
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+
+
+    background:
+
+    linear-gradient(
+        rgba(18,16,16,0) 50%,
+        rgba(0,0,0,.25) 50%
+    ),
+
+    linear-gradient(
+        90deg,
+        rgba(255,0,0,.06),
+        rgba(0,255,0,.02),
+        rgba(0,0,255,.06)
+    );
+
+
+    background-size:
+
+    100% 4px,
+    6px 100%;
+
+
+    pointer-events:none;
+
+    z-index:9999;
+
+
+    animation:
+    flicker .15s infinite;
+
+}
+
+
+
+
+@keyframes flicker {
+
+
+0%{
+opacity:.96;
+}
+
+
+50%{
+opacity:1;
+}
+
+
+100%{
+opacity:.97;
+}
+
+
+}
+
+
+
+
+
+
+.crt-vignette {
+
+
+position:fixed;
+
+inset:0;
+
+
+background:
+
+radial-gradient(
+circle,
+transparent 55%,
+rgba(0,0,0,.75)
+);
+
+
+pointer-events:none;
+
+z-index:9998;
+
+
+}
+
+
+
+
+
+
+/* =====================================================
+   BOOT SCREEN
+===================================================== */
+
+
+#boot-screen {
+
+
+position:fixed;
+
+inset:0;
+
+
+background:#000;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+z-index:5000;
+
+
+}
+
+
+
+.boot-window {
+
+
+width:500px;
+
+
+background:#001900;
+
+
+border:
+
+4px solid #39ff14;
+
+
+padding:20px;
+
+
+box-shadow:
+
+8px 8px 0 #ff00cc;
+
+
+}
+
+
+
+.window-title {
+
+
+background:#39ff14;
+
+color:#001400;
+
+padding:10px;
+
+margin:-20px -20px 20px;
+
+
+}
+
+
+
+#boot-text {
+
+
+line-height:2;
+
+
+color:#ffffff;
+
+
+text-shadow:
+
+0 0 8px #39ff14;
+
+
+}
+
+
+
+
+.loading-bar {
+
+
+height:20px;
+
+margin-top:20px;
+
+border:
+
+2px solid white;
+
+
+}
+
+
+
+.loading-progress {
+
+
+height:100%;
+
+width:0%;
+
+background:
+
+linear-gradient(
+90deg,
+#39ff14,
+#ff00cc,
+#ffff00
+);
+
+
+animation:
+
+loading 3s forwards;
+
+
+}
+
+
+
+@keyframes loading {
+
+
+to{
+
+width:100%;
+
+}
+
+
+}
+
+
+
+
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+
+#desktop {
+
+
+width:100vw;
+
+height:100vh;
+
+
+display:flex;
+
+flex-direction:column;
+
+
+background:
+
+radial-gradient(
+circle at center,
+#003b00,
+#000
+);
+
+
+
+}
+
+
+
+
+/* =====================================================
+   MENU BAR
+===================================================== */
+
+
+
+.menu-bar {
+
+
+height:45px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+background:#111;
+
+
+border-bottom:
+
+3px solid #39ff14;
+
+
+padding:0 20px;
+
+
+}
+
+
+
+.menu-logo {
+
+
+color:#ff00cc;
+
+
+margin-right:30px;
+
+
+}
+
+
+
+
+.menu-bar nav {
+
+
+display:flex;
+
+gap:25px;
+
+
+}
+
+
+.menu-bar span {
+
+
+cursor:pointer;
+
+padding:8px;
+
+
+}
+
+
+
+.menu-bar span:hover {
+
+
+background:#ffff00;
+
+color:#000;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   DESKTOP ICONS
+===================================================== */
+
+
+.desktop-icons {
+
+
+position:absolute;
+
+top:70px;
+
+left:20px;
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:25px;
+
+
+}
+
+
+
+
+.pixel-icon {
+
+
+text-align:center;
+
+cursor:pointer;
+
+
+}
+
+
+
+.icon-image {
+
+
+font-size:35px;
+
+
+filter:
+
+drop-shadow(
+0 0 8px #39ff14
+);
+
+
+}
+
+
+
+.pixel-icon:hover {
+
+
+transform:
+
+scale(1.15);
+
+
+color:#ff00cc;
+
+
+}
+
+
+
+
+
+
+/* =====================================================
+   WINDOWS
+===================================================== */
+
+
+.window {
+
+
+background:
+
+#001d00;
+
+
+border:
+
+3px solid #39ff14;
+
+
+box-shadow:
+
+
+8px 8px 0 #ff00cc;
+
+
+}
+
+
+
+.main-window {
+
+
+position:absolute;
+
+
+top:90px;
+
+left:200px;
+
+
+width:
+
+calc(100vw - 260px);
+
+
+height:
+
+calc(100vh - 170px);
+
+
+
+}
+
+
+
+.window-header {
+
+
+height:40px;
+
+
+background:
+
+linear-gradient(
+90deg,
+#39ff14,
+#ffff00
+);
+
+
+color:#000;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:space-between;
+
+
+padding:0 10px;
+
+
+}
+
+
+
+
+.window-controls button {
+
+
+width:30px;
+
+height:25px;
+
+
+background:#ff00cc;
+
+
+border:2px solid black;
+
+
+cursor:pointer;
+
+
+font-family:inherit;
+
+
+}
+
+
+
+.window-controls button:hover {
+
+
+background:white;
+
+
+}
+
+
+
+.window-menu {
+
+
+height:35px;
+
+padding:10px;
+
+border-bottom:
+
+2px solid #39ff14;
+
+
+}
+
+
+
+
+.window-content {
+
+
+padding:20px;
+
+height:calc(100% - 75px);
+
+
+overflow:auto;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   PAGES
+===================================================== */
+
+
+.page {
+
+
+animation:
+
+fadein .3s;
+
+
+}
+
+
+
+.hidden {
+
+
+display:none!important;
+
+
+}
+
+
+
+@keyframes fadein {
+
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+ PROFILE
+===================================================== */
+
+
+
+.profile-panel {
+
+
+display:flex;
+
+
+gap:30px;
+
+
+align-items:center;
+
+
+}
+
+
+
+.pixel-avatar img {
+
+
+width:120px;
+
+height:120px;
+
+
+image-rendering:
+
+pixelated;
+
+
+border:
+
+5px solid #ff00cc;
+
+
+}
+
+
+
+h1,h2,h3 {
+
+
+color:#ffff00;
+
+
+text-shadow:
+
+3px 3px #ff00cc;
+
+
+}
+
+
+
+
+
+.pixel-button {
+
+
+margin-top:20px;
+
+
+background:#39ff14;
+
+
+color:#000;
+
+
+border:
+
+4px solid #000;
+
+
+padding:15px;
+
+
+font-family:inherit;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+
+.pixel-button:hover {
+
+
+background:#ff00cc;
+
+
+transform:
+
+translate(2px,2px);
+
+
+}
+
+
+
+
+
+/* =====================================================
+ STATUS PANEL
+===================================================== */
+
+
+.status-panel {
+
+
+margin-top:30px;
+
+
+border:
+
+3px solid #ffff00;
+
+
+padding:20px;
+
+
+}
+
+
+
+.status-grid {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+
+gap:15px;
+
+
+}
+
+
+
+.status-grid div {
+
+
+background:#002800;
+
+
+padding:20px;
+
+
+border:
+
+2px solid #39ff14;
+
+
+text-align:center;
+
+
+}
+
+
+
+
+
+
+/* =====================================================
+ GRAPH
+===================================================== */
+
+
+.graph-window {
+
+
+margin-top:30px;
+
+border:
+
+3px solid white;
+
+
+padding:20px;
+
+
+}
+
+
+.bars {
+
+
+height:150px;
+
+
+display:flex;
+
+
+align-items:end;
+
+
+gap:20px;
+
+
+}
+
+
+
+.bars div {
+
+
+width:40px;
+
+
+background:
+
+linear-gradient(
+#ff00cc,
+#ffff00
+);
+
+
+}
+
+
+
+/* =====================================================
+ TERMINAL BLOG
+===================================================== */
+
+
+.terminal {
+
+
+border:
+
+3px solid #39ff14;
+
+
+}
+
+
+
+.terminal-header {
+
+
+background:#39ff14;
+
+color:#000;
+
+padding:15px;
+
+
+}
+
+
+
+.terminal-body {
+
+
+padding:20px;
+
+line-height:2;
+
+
+}
+
+
+.ok {
+
+
+color:#39ff14;
+
+
+}
+
+
+.active {
+
+
+color:#ffff00;
+
+
+}
+
+
+
+
+
+/* =====================================================
+ FILE MANAGER
+===================================================== */
+
+
+.file-grid {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:25px;
+
+
+}
+
+
+
+.image-file {
+
+
+border:
+
+3px solid #39ff14;
+
+
+padding:15px;
+
+
+cursor:pointer;
+
+
+}
+
+
+.image-file:hover {
+
+
+border-color:#ff00cc;
+
+
+}
+
+
+
+.image-file img {
+
+
+width:100%;
+
+
+height:160px;
+
+
+object-fit:cover;
+
+
+image-rendering:auto;
+
+
+}
+
+
+
+
+/* =====================================================
+ CONFIG
+===================================================== */
+
+
+
+.skill {
+
+
+margin:20px 0;
+
+
+}
+
+
+
+.skill div {
+
+
+height:15px;
+
+border:
+
+2px solid white;
+
+
+}
+
+
+
+.skill span {
+
+
+display:block;
+
+height:100%;
+
+background:#39ff14;
+
+
+}
+
+
+
+
+
+/* =====================================================
+ IMAGE VIEWER
+===================================================== */
+
+
+.image-viewer {
+
+
+position:fixed;
+
+
+width:500px;
+
+
+top:100px;
+
+left:50%;
+
+
+transform:
+
+translateX(-50%);
+
+
+z-index:3000;
+
+
+padding-bottom:20px;
+
+
+}
+
+
+.image-viewer img {
+
+
+width:90%;
+
+display:block;
+
+
+margin:20px auto;
+
+
+}
+
+
+
+
+
+/* =====================================================
+ STATUS BAR
+===================================================== */
+
+
+.status-bar {
+
+
+position:fixed;
+
+
+bottom:0;
+
+
+height:35px;
+
+
+width:100%;
+
+
+background:#111;
+
+
+border-top:
+
+3px solid #39ff14;
+
+
+display:flex;
+
+
+justify-content:space-between;
+
+
+padding:8px 20px;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+ RESPONSIVE
+===================================================== */
+
+
+@media(max-width:700px){
+
+
+.main-window {
+
+
+left:10px;
+
+
+width:
+
+calc(100vw - 20px);
+
+
+}
+
+
+
+.profile-panel {
+
+
+flex-direction:column;
+
+
+}
+
+
+
+.status-grid {
+
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+
+}
+
+
+
+.file-grid {
+
+
+grid-template-columns:
+
+1fr;
+
+
+}
+
+
+
+.menu-bar nav {
+
+
+display:none;
+
+
+}
+
+
+
+}
