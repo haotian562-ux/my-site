@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>
+陈昊天的数字空间 OS
+</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+<body>
+
+
+<!-- ===============================
+     CRT 显示器效果层
+================================ -->
+
+<div class="crt-overlay"></div>
+
+<div class="crt-vignette"></div>
+
+
+
+
+
+<!-- ===============================
+     系统启动界面
+================================ -->
+
+
+<section id="boot-screen">
+
+
+<div class="boot-window">
+
+
+<div class="window-title">
+
+数字空间启动程序 SYSTEM BOOT
+
+</div>
+
+
+
+<div id="boot-text">
+
+
+&gt; 正在启动个人数字空间...<br>
+
+&gt; 正在检测用户身份...<br>
+
+&gt; 正在加载视觉系统...<br>
+
+&gt; 正在连接内容数据库...<br>
+
+&gt; 正在开启 CRT 显示模式...<br>
+
+&gt; 系统启动完成。欢迎访问。
+
+
+</div>
+
+
+
+<div class="loading-bar">
+
+<div class="loading-progress"></div>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ===============================
+     桌面系统
+================================ -->
+
+
+<div id="desktop">
+
+
+
+
+
+<!-- 顶部菜单 -->
+
+<header class="menu-bar">
+
+
+<div class="menu-logo">
+
+◉ 中文数字空间 OS
+
+</div>
+
+
+
+<nav>
+
+
+<span>
+首页
+</span>
+
+
+<span>
+博客
+</span>
+
+
+<span>
+作品
+</span>
+
+
+<span>
+关于
+</span>
+
+
+<span>
+留言
+</span>
+
+
+<span>
+设置
+</span>
+
+
+
+</nav>
+
+
+
+</header>
+
+
+
+
+
+
+
+<!-- 桌面快捷方式 -->
+
+
+<div class="desktop-icons">
+
+
+<div class="pixel-icon"
+data-page="home">
+
+
+<div class="icon-image">
+
+💻
+
+</div>
+
+
+<span>
+
+主页.exe
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="pixel-icon"
+data-page="blog">
+
+
+<div class="icon-image">
+
+📟
+
+</div>
+
+
+<span>
+
+博客.log
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="pixel-icon"
+data-page="works">
+
+
+<div class="icon-image">
+
+📁
+
+</div>
+
+
+<span>
+
+作品库.dir
+
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="pixel-icon"
+data-page="about">
+
+
+<div class="icon-image">
+
+👤
+
+</div>
+
+
+<span>
+
+用户档案.cfg
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     主窗口
+================================ -->
+
+
+
+<section class="window main-window">
+
+
+
+
+
+<div class="window-header">
+
+
+<span>
+
+PERSONAL_OS.exe
+
+</span>
+
+
+
+<div class="window-controls">
+
+
+<button class="minimize">
+
+—
+
+</button>
+
+
+<button class="close">
+
+×
+
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="window-menu">
+
+
+文件　编辑　查看　数据　工具　窗口　帮助
+
+
+</div>
+
+
+
+
+
+
+
+<div class="window-content">
+
+
+
+
+
+
+<!-- ===============================
+     首页
+================================ -->
+
+
+
+<section 
+id="home"
+class="page">
+
+
+
+
+
+<div class="profile-panel">
+
+
+
+<div class="pixel-avatar">
+
+
+<img src="assets/avatar.png"
+alt="用户头像">
+
+
+</div>
+
+
+
+
+
+
+<div class="profile-info">
+
+
+
+<h1>
+
+用户：
+陈昊天
+
+</h1>
+
+
+
+
+<p>
+
+
+身份：
+
+数字创作者 / 独立设计者
+
+
+<br><br>
+
+
+探索：
+
+Y2K视觉、
+
+复古未来主义、
+
+数字艺术、
+
+网页交互。
+
+
+<br><br>
+
+
+欢迎进入我的私人数字空间。
+
+
+</p>
+
+
+
+
+<button class="pixel-button">
+
+
+连接系统
+
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 系统状态 -->
+
+
+<div class="status-panel">
+
+
+<h2>
+
+系统状态 SYSTEM STATUS
+
+</h2>
+
+
+
+
+<div class="status-grid">
+
+
+<div>
+
+
+内存占用
+
+<br>
+
+
+<span id="memory">
+
+
+64%
+
+
+</span>
+
+
+</div>
+
+
+
+<div>
+
+
+服务器
+
+<br>
+
+
+在线
+
+
+</div>
+
+
+
+<div>
+
+
+访客数量
+
+<br>
+
+
+<span id="visitor">
+
+001
+
+</span>
+
+
+</div>
+
+
+
+
+<div>
+
+
+信号质量
+
+<br>
+
+
+99.8%
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 数据图表 -->
+
+
+<div class="graph-window">
+
+
+<div class="graph-title">
+
+数据监控中心 DATA MONITOR
+
+
+</div>
+
+
+
+<div class="bars">
+
+
+<div></div>
+
+<div></div>
+
+<div></div>
+
+<div></div>
+
+<div></div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     博客页面
+================================ -->
+
+
+
+<section 
+id="blog"
+class="page hidden">
+
+
+
+<div class="terminal">
+
+
+
+<div class="terminal-header">
+
+
+博客数据库 BLOG_DATABASE.log
+
+
+</div>
+
+
+
+
+
+<div class="terminal-body">
+
+
+<div id="blog-list">
+
+
+<!--
+这里由 app.js 从数据库加载文章
+
+示例：
+
+01
+
+标题:
+我的Y2K设计实验
+
+
+状态:
+已发布
+
+-->
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     作品页面
+================================ -->
+
+
+
+<section
+id="works"
+class="page hidden">
+
+
+
+<div class="file-manager">
+
+
+
+<div class="file-header">
+
+
+作品提取器 IMAGE_EXTRACTOR.exe
+
+
+</div>
+
+
+
+
+
+<div 
+class="file-grid"
+id="works-list">
+
+
+<!--
+
+数据库加载作品图片
+
+
+-->
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     关于页面
+================================ -->
+
+
+
+<section
+id="about"
+class="page hidden">
+
+
+
+<div class="config-window">
+
+
+
+<h2>
+
+用户配置 USER_PROFILE.cfg
+
+</h2>
+
+
+
+
+<p>
+
+姓名：
+
+陈昊天
+
+</p>
+
+
+
+<p>
+
+职业：
+
+数字创作者
+
+</p>
+
+
+
+
+
+<h3>
+
+技能列表
+
+</h3>
+
+
+
+<div class="skill">
+
+
+HTML
+
+<div>
+
+<span style="width:90%">
+
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="skill">
+
+
+CSS
+
+<div>
+
+<span style="width:85%">
+
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="skill">
+
+
+JavaScript
+
+<div>
+
+<span style="width:75%">
+
+</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<h3>
+
+未来目标
+
+</h3>
+
+
+
+<ul>
+
+
+<li>
+
+创造个人数字世界
+
+</li>
+
+
+<li>
+
+探索未来视觉语言
+
+</li>
+
+
+<li>
+
+保存互联网时代记忆
+
+</li>
+
+
+</ul>
+
+
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     留言页面
+================================ -->
+
+
+
+<section
+id="message"
+class="page hidden">
+
+
+
+<div class="terminal">
+
+
+<div class="terminal-header">
+
+
+评论终端 COMMENT_TERMINAL
+
+
+</div>
+
+
+
+
+
+<div class="terminal-body">
+
+
+
+<div id="comment-list">
+
+
+等待加载评论...
+
+
+</div>
+
+
+
+
+
+<textarea
+id="comment-input"
+placeholder="输入留言...">
+
+</textarea>
+
+
+
+
+<button
+id="send-comment"
+class="pixel-button">
+
+
+发送留言
+
+
+</button>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     图片查看窗口
+================================ -->
+
+
+
+<div
+id="image-viewer"
+class="window image-viewer hidden">
+
+
+<div class="window-header">
+
+
+图片查看器 IMAGE_VIEWER.exe
+
+
+<button class="close-viewer">
+
+×
+
+
+</button>
+
+
+</div>
+
+
+
+
+<img 
+id="viewer-image"
+src="">
+
+
+
+<p id="viewer-description">
+
+图片信息
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+     状态栏
+================================ -->
+
+
+
+<footer class="status-bar">
+
+
+<div>
+
+系统正常运行
+
+</div>
+
+
+<div id="clock">
+
+00:00:00
+
+</div>
+
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+
+</html>

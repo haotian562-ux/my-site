@@ -1,0 +1,1538 @@
+/* =====================================================
+   中文 Y2K CRT DIGITAL SPACE OS
+   STYLE SYSTEM v2.0
+===================================================== */
+
+
+/* ===============================
+   全局设置
+================================ */
+
+
+* {
+
+    box-sizing:border-box;
+
+}
+
+
+html,
+body {
+
+
+    width:100%;
+
+    height:100%;
+
+
+    margin:0;
+
+
+    overflow:hidden;
+
+
+    background:#001000;
+
+
+    color:#d8ffd8;
+
+
+    font-family:
+
+    "Press Start 2P",
+    "Microsoft YaHei",
+    monospace;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+button,
+textarea {
+
+
+    font-family:inherit;
+
+
+}
+
+
+
+
+
+/* ===============================
+   CRT 扫描线效果
+================================ */
+
+
+.crt-overlay {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    z-index:9999;
+
+
+    pointer-events:none;
+
+
+
+    background:
+
+
+
+    linear-gradient(
+
+        rgba(0,0,0,0) 50%,
+
+        rgba(0,0,0,.25) 50%
+
+    ),
+
+
+
+    linear-gradient(
+
+        90deg,
+
+        rgba(255,0,0,.05),
+
+        rgba(0,255,0,.03),
+
+        rgba(0,0,255,.05)
+
+    );
+
+
+
+    background-size:
+
+
+    100% 4px,
+
+
+    5px 100%;
+
+
+
+    animation:
+
+    crt-flicker .18s infinite;
+
+
+}
+
+
+
+
+
+@keyframes crt-flicker {
+
+
+0%{
+
+opacity:.96;
+
+}
+
+
+50%{
+
+opacity:1;
+
+}
+
+
+100%{
+
+opacity:.98;
+
+}
+
+
+}
+
+
+
+
+
+.crt-vignette {
+
+
+position:fixed;
+
+
+inset:0;
+
+
+z-index:9998;
+
+
+pointer-events:none;
+
+
+
+background:
+
+
+radial-gradient(
+
+circle,
+
+transparent 50%,
+
+rgba(0,0,0,.75)
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   启动画面
+================================ */
+
+
+
+#boot-screen {
+
+
+position:fixed;
+
+
+inset:0;
+
+
+z-index:5000;
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+background:#000;
+
+
+}
+
+
+
+.boot-window {
+
+
+width:520px;
+
+
+padding:25px;
+
+
+background:#001800;
+
+
+border:
+
+
+4px solid #39ff14;
+
+
+
+box-shadow:
+
+
+10px 10px 0 #ff00cc;
+
+
+}
+
+
+
+.window-title {
+
+
+background:#39ff14;
+
+
+color:#001000;
+
+
+padding:12px;
+
+
+margin:-25px -25px 20px;
+
+
+}
+
+
+
+
+#boot-text {
+
+
+line-height:2;
+
+
+color:white;
+
+
+text-shadow:
+
+0 0 8px #39ff14;
+
+
+}
+
+
+
+
+.loading-bar {
+
+
+height:20px;
+
+
+border:
+
+2px solid white;
+
+
+margin-top:20px;
+
+
+}
+
+
+
+.loading-progress {
+
+
+height:100%;
+
+
+width:0;
+
+
+background:
+
+
+linear-gradient(
+
+90deg,
+
+#39ff14,
+
+#ffff00,
+
+#ff00cc
+
+);
+
+
+animation:
+
+loading 3s forwards;
+
+
+}
+
+
+@keyframes loading {
+
+
+to{
+
+width:100%;
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   桌面
+================================ */
+
+
+
+#desktop {
+
+
+width:100vw;
+
+
+height:100vh;
+
+
+
+background:
+
+
+radial-gradient(
+
+circle,
+
+#003b00,
+
+#000
+
+);
+
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+}
+
+
+
+
+
+/* ===============================
+   顶部菜单
+================================ */
+
+
+.menu-bar {
+
+
+height:45px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+padding:0 20px;
+
+
+background:#111;
+
+
+
+border-bottom:
+
+
+3px solid #39ff14;
+
+
+}
+
+
+
+
+.menu-logo {
+
+
+color:#ff00cc;
+
+
+margin-right:35px;
+
+
+}
+
+
+
+.menu-bar nav {
+
+
+display:flex;
+
+
+gap:20px;
+
+
+}
+
+
+
+
+.menu-bar span {
+
+
+cursor:pointer;
+
+
+padding:8px;
+
+
+}
+
+
+
+.menu-bar span:hover {
+
+
+background:#ffff00;
+
+
+color:#000;
+
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   桌面图标
+================================ */
+
+
+
+.desktop-icons {
+
+
+position:absolute;
+
+
+top:70px;
+
+
+left:20px;
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+gap:25px;
+
+
+}
+
+
+
+
+.pixel-icon {
+
+
+text-align:center;
+
+
+cursor:pointer;
+
+
+transition:.2s;
+
+
+}
+
+
+
+.pixel-icon:hover {
+
+
+transform:scale(1.12);
+
+
+color:#ff00cc;
+
+
+}
+
+
+
+
+.icon-image {
+
+
+font-size:36px;
+
+
+filter:
+
+
+drop-shadow(
+
+0 0 8px #39ff14
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+/* ===============================
+   窗口系统
+================================ */
+
+
+.window {
+
+
+background:
+
+
+rgba(0,25,0,.95);
+
+
+border:
+
+
+3px solid #39ff14;
+
+
+box-shadow:
+
+
+8px 8px 0 #ff00cc;
+
+
+}
+
+
+
+.main-window {
+
+
+position:absolute;
+
+
+left:210px;
+
+
+top:90px;
+
+
+width:
+
+
+calc(100vw - 260px);
+
+
+
+height:
+
+
+calc(100vh - 160px);
+
+
+
+}
+
+
+
+
+.window-header {
+
+
+height:42px;
+
+
+background:
+
+
+linear-gradient(
+
+90deg,
+
+#39ff14,
+
+#ffff00
+
+);
+
+
+
+color:#000;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:space-between;
+
+
+padding:0 10px;
+
+
+cursor:move;
+
+
+}
+
+
+
+
+.window-controls button {
+
+
+width:30px;
+
+
+height:25px;
+
+
+border:
+
+
+2px solid #000;
+
+
+
+background:#ff00cc;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+.window-controls button:hover {
+
+
+background:white;
+
+
+}
+
+
+
+
+.window-menu {
+
+
+padding:12px;
+
+
+border-bottom:
+
+
+2px solid #39ff14;
+
+
+}
+
+
+
+.window-content {
+
+
+padding:25px;
+
+
+overflow:auto;
+
+
+height:
+
+
+calc(100% - 80px);
+
+
+}
+
+
+
+
+
+/* ===============================
+   页面切换
+================================ */
+
+
+
+.hidden {
+
+
+display:none!important;
+
+
+}
+
+
+
+.page {
+
+
+animation:
+
+appear .3s;
+
+
+}
+
+
+
+@keyframes appear {
+
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   首页资料
+================================ */
+
+
+.profile-panel {
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:40px;
+
+
+}
+
+
+
+.pixel-avatar img {
+
+
+width:130px;
+
+
+height:130px;
+
+
+image-rendering:pixelated;
+
+
+
+border:
+
+
+5px solid #ff00cc;
+
+
+
+box-shadow:
+
+
+0 0 20px #ff00cc;
+
+
+}
+
+
+
+
+h1,
+h2,
+h3 {
+
+
+color:#ffff00;
+
+
+text-shadow:
+
+
+3px 3px #ff00cc;
+
+
+}
+
+
+
+
+
+
+.pixel-button {
+
+
+padding:15px;
+
+
+background:#39ff14;
+
+
+color:#000;
+
+
+border:
+
+
+4px solid #000;
+
+
+cursor:pointer;
+
+
+margin-top:20px;
+
+
+}
+
+
+
+.pixel-button:hover {
+
+
+background:#ff00cc;
+
+
+color:white;
+
+
+animation:
+
+blink .3s infinite;
+
+
+}
+
+
+
+
+@keyframes blink {
+
+
+50%{
+
+filter:brightness(2);
+
+}
+
+}
+
+
+
+
+
+
+
+
+/* ===============================
+   状态面板
+================================ */
+
+
+.status-panel {
+
+
+margin-top:30px;
+
+
+border:
+
+
+3px solid #ffff00;
+
+
+padding:20px;
+
+
+}
+
+
+
+.status-grid {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+
+repeat(4,1fr);
+
+
+gap:15px;
+
+
+}
+
+
+
+
+.status-grid div {
+
+
+padding:20px;
+
+
+background:#002000;
+
+
+border:
+
+
+2px solid #39ff14;
+
+
+text-align:center;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   数据图表
+================================ */
+
+
+
+.graph-window {
+
+
+margin-top:30px;
+
+
+border:
+
+
+3px solid white;
+
+
+padding:20px;
+
+
+}
+
+
+
+.bars {
+
+
+height:150px;
+
+
+display:flex;
+
+
+align-items:flex-end;
+
+
+gap:20px;
+
+
+}
+
+
+
+
+.bars div {
+
+
+width:45px;
+
+
+background:
+
+
+linear-gradient(
+
+#ff00cc,
+
+#ffff00
+
+);
+
+
+animation:
+
+datawave 2s infinite;
+
+
+}
+
+
+
+
+@keyframes datawave {
+
+
+50%{
+
+height:90%;
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   博客终端
+================================ */
+
+
+
+.terminal {
+
+
+border:
+
+
+3px solid #39ff14;
+
+
+}
+
+
+
+
+.terminal-header {
+
+
+padding:15px;
+
+
+background:#39ff14;
+
+
+color:#000;
+
+
+}
+
+
+
+.terminal-body {
+
+
+padding:20px;
+
+
+line-height:2;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   作品文件管理器
+================================ */
+
+
+
+.file-manager {
+
+
+border:
+
+
+3px solid #ffff00;
+
+
+}
+
+
+
+.file-header {
+
+
+padding:15px;
+
+
+background:#ffff00;
+
+
+color:#000;
+
+
+}
+
+
+
+.file-grid {
+
+
+display:grid;
+
+
+grid-template-columns:
+
+
+repeat(3,1fr);
+
+
+gap:20px;
+
+
+padding:20px;
+
+
+}
+
+
+
+
+.file-grid img {
+
+
+width:100%;
+
+
+height:180px;
+
+
+object-fit:cover;
+
+
+border:
+
+
+3px solid #39ff14;
+
+
+}
+
+
+
+.file-grid img:hover {
+
+
+border-color:#ff00cc;
+
+
+transform:scale(1.03);
+
+
+}
+
+
+
+
+
+
+
+
+/* ===============================
+   评论终端
+================================ */
+
+
+
+textarea {
+
+
+width:100%;
+
+
+height:120px;
+
+
+background:#000;
+
+
+color:#39ff14;
+
+
+border:
+
+
+2px solid #39ff14;
+
+
+padding:15px;
+
+
+resize:none;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   图片查看器
+================================ */
+
+
+
+.image-viewer {
+
+
+position:fixed;
+
+
+top:100px;
+
+
+left:50%;
+
+
+transform:translateX(-50%);
+
+
+width:520px;
+
+
+z-index:2000;
+
+
+padding-bottom:20px;
+
+
+}
+
+
+
+
+.image-viewer img {
+
+
+display:block;
+
+
+width:90%;
+
+
+margin:20px auto;
+
+
+}
+
+
+
+
+
+/* ===============================
+   状态栏
+================================ */
+
+
+.status-bar {
+
+
+position:fixed;
+
+
+bottom:0;
+
+
+height:35px;
+
+
+width:100%;
+
+
+background:#111;
+
+
+border-top:
+
+
+3px solid #39ff14;
+
+
+display:flex;
+
+
+justify-content:space-between;
+
+
+align-items:center;
+
+
+padding:0 20px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   手机适配
+================================ */
+
+
+@media(max-width:800px){
+
+
+
+body{
+
+
+font-size:10px;
+
+
+}
+
+
+
+
+.main-window {
+
+
+left:10px;
+
+
+width:
+
+
+calc(100vw - 20px);
+
+
+}
+
+
+
+.desktop-icons {
+
+
+display:none;
+
+
+}
+
+
+
+.profile-panel {
+
+
+flex-direction:column;
+
+
+}
+
+
+
+.status-grid {
+
+
+grid-template-columns:
+
+
+repeat(2,1fr);
+
+
+}
+
+
+
+.file-grid {
+
+
+grid-template-columns:
+
+
+1fr;
+
+
+}
+
+
+
+.menu-bar nav {
+
+
+display:none;
+
+
+}
+
+
+
+.image-viewer {
+
+
+width:90vw;
+
+
+}
+
+
+}
