@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Y2K SYSTEM // PERSONAL OS</title>
+
+    <!-- Pixel Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     CRT EFFECT LAYERS
+========================= -->
+
+<div class="crt-overlay"></div>
+<div class="crt-vignette"></div>
+
+
+
+<!-- =========================
+     BOOT SEQUENCE
+========================= -->
+
+<section id="boot-screen">
+
+    <div class="boot-window">
+
+        <div class="window-title">
+            SYSTEM INITIALIZATION
+        </div>
+
+
+        <div id="boot-text">
+
+            > Connexion au système...
+            <br>
+            > Chargement mémoire...
+            <br>
+            > Vérification fichiers...
+            <br>
+            > Diagnostic graphique...
+            <br>
+            > Activation CRT MODE...
+            <br>
+            > Bienvenue utilisateur.
+
+        </div>
+
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- =========================
+     DESKTOP
+========================= -->
+
+<div id="desktop">
+
+
+
+<!-- =========================
+     MENU BAR
+========================= -->
+
+
+<header class="menu-bar">
+
+    <div class="menu-logo">
+        ◉ Y2K_OS
+    </div>
+
+
+    <nav>
+
+        <span>Fichier</span>
+        <span>Edition</span>
+        <span>Affichage</span>
+        <span>Données</span>
+        <span>Outils</span>
+        <span>Fenêtre</span>
+        <span>Aide</span>
+
+    </nav>
+
+
+</header>
+
+
+
+
+
+<!-- =========================
+     DESKTOP ICONS
+========================= -->
+
+
+<div class="desktop-icons">
+
+
+<div class="pixel-icon">
+    <div class="icon-image">💾</div>
+    <span>HOME.exe</span>
+</div>
+
+
+<div class="pixel-icon">
+    <div class="icon-image">📟</div>
+    <span>BLOG.log</span>
+</div>
+
+
+<div class="pixel-icon">
+    <div class="icon-image">📁</div>
+    <span>WORKS.dir</span>
+</div>
+
+
+<div class="pixel-icon">
+    <div class="icon-image">👤</div>
+    <span>USER.cfg</span>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- =========================
+     MAIN WINDOW
+========================= -->
+
+
+<section class="window main-window"
+id="main-window">
+
+
+<div class="window-header">
+
+    <span>
+        PERSONAL_SYSTEM.EXE
+    </span>
+
+
+    <div class="window-controls">
+
+        <button class="minimize">
+            _
+        </button>
+
+        <button class="close">
+            X
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
+
+<div class="window-menu">
+
+    Fichier&nbsp;&nbsp;
+    Edition&nbsp;&nbsp;
+    Affichage&nbsp;&nbsp;
+    Outils
+
+</div>
+
+
+
+
+
+
+<div class="window-content">
+
+
+
+
+
+<!-- =========================
+     HOME PAGE
+========================= -->
+
+
+<section id="home-page"
+class="page">
+
+
+<div class="profile-panel">
+
+
+<div class="pixel-avatar">
+
+    <img src="assets/avatar.png"
+    alt="avatar">
+
+</div>
+
+
+
+<div>
+
+<h1>
+USER : HAO
+</h1>
+
+
+<p>
+
+Créateur numérique.
+<br>
+Exploration graphique,
+design rétro,
+technologies futures.
+
+</p>
+
+
+<button class="pixel-button">
+CONNECT
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- SYSTEM STATUS -->
+
+<div class="status-panel">
+
+
+<h2>
+SYSTEM STATUS
+</h2>
+
+
+<div class="status-grid">
+
+
+<div>
+MEMORY
+<br>
+<span id="memory">
+64%
+</span>
+</div>
+
+
+<div>
+CHANNEL
+<br>
+ONLINE
+</div>
+
+
+<div>
+USERS
+<br>
+001
+</div>
+
+
+<div>
+SIGNAL
+<br>
+99.8%
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- DATA GRAPH -->
+
+<div class="graph-window">
+
+
+<div class="graph-title">
+DATA MONITOR
+</div>
+
+
+<div class="bars">
+
+
+<div style="height:40%">
+</div>
+
+<div style="height:70%">
+</div>
+
+<div style="height:55%">
+</div>
+
+<div style="height:90%">
+</div>
+
+<div style="height:65%">
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     BLOG PAGE
+========================= -->
+
+
+<section id="blog-page"
+class="page hidden">
+
+
+<div class="terminal">
+
+
+<div class="terminal-header">
+
+BLOG_DATABASE.log
+
+</div>
+
+
+
+<div class="terminal-body">
+
+
+<p>
+01_
+STATUS:
+<span class="ok">
+ok
+</span>
+
+<br>
+
+> Introduction au design Y2K
+
+</p>
+
+
+
+<p>
+02_
+STATUS:
+<span class="active">
+active
+</span>
+
+<br>
+
+> Journal de création digitale
+
+</p>
+
+
+
+<p>
+03_
+STATUS:
+<span class="ok">
+ok
+</span>
+
+<br>
+
+> Analyse des interfaces rétro
+
+</p>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     PORTFOLIO PAGE
+========================= -->
+
+
+<section id="portfolio-page"
+class="page hidden">
+
+
+
+<div class="file-manager">
+
+
+<div class="file-header">
+
+IMAGE_EXTRACTOR.exe
+
+</div>
+
+
+
+<div class="file-grid">
+
+
+
+<div class="image-file"
+data-image="assets/work01.jpg">
+
+
+<img src="assets/work01.jpg">
+
+<p>
+WORK_001
+</p>
+
+
+</div>
+
+
+
+
+<div class="image-file"
+data-image="assets/work02.jpg">
+
+
+<img src="assets/work02.jpg">
+
+<p>
+WORK_002
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="image-file"
+data-image="assets/work03.jpg">
+
+
+<img src="assets/work03.jpg">
+
+<p>
+WORK_003
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     ABOUT PAGE
+========================= -->
+
+
+<section id="about-page"
+class="page hidden">
+
+
+<div class="config-window">
+
+
+<h2>
+USER_CONFIGURATION.cfg
+</h2>
+
+
+
+<p>
+
+NAME:
+HAO
+
+</p>
+
+
+<p>
+
+ROLE:
+DIGITAL CREATOR
+
+</p>
+
+
+
+
+<h3>
+SKILLS
+</h3>
+
+
+
+<div class="skill">
+
+HTML
+
+<div>
+<span style="width:90%">
+</span>
+</div>
+
+</div>
+
+
+
+
+<div class="skill">
+
+CSS
+
+<div>
+<span style="width:85%">
+</span>
+</div>
+
+</div>
+
+
+
+
+
+<div class="skill">
+
+JAVASCRIPT
+
+<div>
+<span style="width:75%">
+</span>
+</div>
+
+</div>
+
+
+
+
+
+
+<h3>
+TARGET_LIST
+</h3>
+
+
+<ul>
+
+<li>
+CREATE FUTURE UI
+</li>
+
+<li>
+BUILD DIGITAL WORLD
+</li>
+
+<li>
+ARCHIVE MEMORY
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<!-- =========================
+ IMAGE VIEWER
+========================= -->
+
+
+<div id="image-viewer"
+class="window image-viewer hidden">
+
+
+<div class="window-header">
+
+IMAGE_VIEWER.exe
+
+
+<button class="close-viewer">
+X
+</button>
+
+
+</div>
+
+
+<img id="viewer-image">
+
+
+<p id="viewer-text">
+
+HIGH RESOLUTION IMAGE
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =========================
+ STATUS BAR
+========================= -->
+
+
+<footer class="status-bar">
+
+
+<div>
+
+READY
+
+</div>
+
+
+<div id="clock">
+
+00:00:00
+
+</div>
+
+
+</footer>
+
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
