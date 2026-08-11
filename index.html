@@ -1123,3 +1123,39 @@ src="">
 
 
 </html>
+
+<!-- 外层加上网格背景 -->
+<div class="cyber-grid-bg" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+
+    <!-- HUD 容器 -->
+    <div class="hud-container" style="width: 80%; max-width: 600px;">
+        
+        <!-- 装饰性扫描线层 -->
+        <div class="scan-line"></div>
+
+        <!-- 左上角：系统编号 -->
+        <div class="tech-text pos-tl">
+            SYS_ID: 894-X<br>
+            SEQ: ANALYSIS_01
+        </div>
+
+        <!-- 中间：主体图片 -->
+        <!-- 请替换为你自己的图片链接 -->
+        <img src="your-hand-image.jpg" alt="Digital Hand Analysis" class="cyber-img">
+
+        <!-- 图片中心的标签 (模拟图中的 HAND 圆圈) -->
+        <div class="tech-text pos-center-label">
+            TARGET: HAND_STRUCTURE
+        </div>
+
+        <!-- 右下角：状态数据 -->
+        <div class="tech-text pos-br">
+            STATUS: ONLINE<br>
+            RENDER: 98%
+        </div>
+
+        <!-- 装饰用的圆圈 (可以用 CSS 画，也可以直接用 SVG) -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 150px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 50%; pointer-events: none;"></div>
+
+    </div>
+</div>
