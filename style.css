@@ -1504,3 +1504,95 @@ width:90vw;
 .crt-overlay, .crt-vignette {
   z-index: 2;
 }
+
+/* =============================== 赛博档案/HUD 风格组件 ================================ */
+
+/* 1. 全局背景网格 (模拟图纸背景) */
+.cyber-grid-bg {
+  background-color: #050505;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px; /* 网格大小 */
+  position: relative;
+  overflow: hidden;
+}
+
+/* 2. 核心容器：带有四角括号的 HUD 框 */
+.hud-container {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  margin: 20px;
+  /* 模拟图中那种发光的细线框 */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05) inset; 
+}
+
+/* 四角装饰 (括号效果) */
+.hud-container::before, .hud-container::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #fff;
+  transition: all 0.3s ease;
+}
+
+.hud-container::before {
+  top: -1px; left: -1px;
+  border-right: none; border-bottom: none;
+}
+
+.hud-container::after {
+  bottom: -1px; right: -1px;
+  border-left: none; border-top: none;
+}
+
+/* 3. 图片处理：模拟 X光/全息投影感 */
+.cyber-img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%) contrast(1.2) brightness(1.1);
+  opacity: 0.8;
+  /* 关键：让图片与背景融合，产生通透感 */
+  mix-blend-mode: screen; 
+}
+
+/* 4. 装饰性数据文字 */
+.tech-text {
+  font-family: 'Courier New', Courier, monospace; /* 等宽字体 */
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: absolute;
+}
+
+/* 定位示例：左上角编号 */
+.pos-tl { top: 10px; left: 10px; }
+/* 定位示例：右下角状态 */
+.pos-br { bottom: 10px; right: 10px; text-align: right; }
+/* 定位示例：中心标签 */
+.pos-center-label {
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 5px 10px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* 5. 动态扫描线动画 (可选) */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scan-line {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.02) 51%, transparent 52%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10;
+}
