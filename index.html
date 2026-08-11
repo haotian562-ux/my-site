@@ -5,59 +5,90 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>
 陈昊天 Digital Archive
 </title>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link 
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=JetBrains+Mono&display=swap"
+rel="stylesheet">
 
 
 <link rel="stylesheet" href="style.css">
 
+
 </head>
+
 
 
 <body>
 
 
-<!-- CRT -->
+
+<!-- CRT扫描效果 -->
+
 <div class="crt"></div>
 
 
-<!-- MATRIX入口 -->
+
+
+
+<!-- =====================
+ MATRIX启动界面
+===================== -->
+
 
 <section id="matrix-intro">
 
+
 <canvas id="matrix"></canvas>
+
 
 
 <div class="matrix-panel">
 
 
 <h1>
+
 DIGITAL ARCHIVE
+
 </h1>
 
 
+
 <p>
+
 正在连接个人数字档案...
+
 </p>
+
 
 
 <p>
+
 IDENTITY SCAN : ONLINE
+
 </p>
+
 
 
 <button id="enter">
+
 进入系统
+
 </button>
 
 
+
 </div>
+
+
 
 </section>
 
@@ -65,43 +96,67 @@ IDENTITY SCAN : ONLINE
 
 
 
-<!-- 主系统 -->
+
+
+
+
+<!-- =====================
+ 主系统
+===================== -->
 
 
 <main id="system" class="hidden">
 
 
 
+
+
 <header class="topbar">
 
 
-<div>
+<div class="logo">
 
 DIGITAL ARCHIVE OS v4.0
 
 </div>
 
 
+
+
+
 <nav>
 
+
 <span data-page="home">
+
 首页
+
 </span>
+
 
 
 <span data-page="works">
+
 作品数据库
+
 </span>
+
 
 
 <span data-page="blog">
+
 知识日志
+
 </span>
+
 
 
 <span data-page="about">
+
 用户档案
+
 </span>
+
 
 
 </nav>
@@ -113,24 +168,38 @@ DIGITAL ARCHIVE OS v4.0
 
 
 
+
+
+
+
 <section class="archive-window">
+
+
 
 
 
 <div class="window-title">
 
 
+<span>
+
 PERSONAL ARCHIVE SYSTEM
 
+</span>
 
-<div>
+
+
+<div class="window-buttons">
 
 □ ×
 
 </div>
 
 
+
 </div>
+
+
 
 
 
@@ -142,276 +211,173 @@ PERSONAL ARCHIVE SYSTEM
 
 
 
-<!-- 首页 -->
+<!-- =====================
+ 首页
+===================== -->
 
 
-/* ==========================
- FUTURE ARCHIVE SYSTEM
-========================== */
+<section 
+id="home"
+class="page">
 
 
-.archive-system{
+<div class="archive-system">
 
-width:100%;
-height:100%;
 
-background:
 
-linear-gradient(
-120deg,
-#050505,
-#111
-);
+<div class="archive-header">
 
-padding:30px;
 
-color:#00ff99;
+<div>
 
+PROFILE ANALYSIS
 
-}
+</div>
 
 
+<div>
 
+STATUS : ONLINE
 
-.archive-header{
+</div>
 
-display:flex;
 
-justify-content:space-between;
+</div>
 
-border-bottom:
 
-1px solid #00ff99;
 
-padding-bottom:15px;
 
-font-size:12px;
 
-letter-spacing:3px;
 
 
-}
 
+<div class="analysis-panel">
 
 
 
 
-.analysis-panel{
 
+<img
 
-position:relative;
+src="assets/profile.jpg"
 
-margin-top:30px;
+class="analysis-image"
 
-height:400px;
+alt="profile"
 
-border:
+>
 
-1px solid #00ff99;
 
 
-overflow:hidden;
 
+<div class="hud hud-top">
 
-}
 
+IDENTITY :
 
+HAOTIAN562
 
-.analysis-image{
 
+<br>
 
-width:100%;
 
-height:100%;
+LEVEL :
 
-object-fit:contain;
+CREATOR
 
 
-filter:
+<br>
 
-contrast(1.2)
-brightness(.8);
 
+SYSTEM :
 
+ACTIVE
 
-}
 
+</div>
 
 
 
-.hud{
 
 
-position:absolute;
 
-font-family:
+<div class="hud hud-bottom">
 
-monospace;
 
+DIGITAL DESIGNER
 
-font-size:12px;
+<br>
 
 
-background:
+FUTURE ARCHIVE
 
-rgba(0,0,0,.6);
+<br>
 
 
-padding:15px;
+VERSION 4.0
 
 
-border:
+</div>
 
-1px solid #00ff99;
 
 
-}
 
 
+</div>
 
-.hud-top{
 
-top:20px;
 
-left:20px;
 
 
-}
 
 
 
 
-.hud-bottom{
-
-right:20px;
-
-bottom:20px;
-
-
-}
-
-
-
-.profile-box{
-
-
-margin-top:25px;
-
-
-border:
-
-1px solid #00ff99;
-
-
-padding:25px;
-
-
-background:
-
-rgba(0,0,0,.7);
-
-
-}
-
-
-
-.profile-box h2{
-
-
-font-size:18px;
-
-margin-bottom:20px;
-
-
-}
-
-
-.profile-box p{
-
-
-line-height:2;
-
-
-}
-
-
-
-/*扫描线*/
-
-.analysis-panel::after{
-
-
-content:"";
-
-
-position:absolute;
-
-
-left:0;
-
-top:-20%;
-
-
-width:100%;
-
-
-height:5px;
-
-
-background:#00ff99;
-
-
-opacity:.5;
-
-
-animation:
-
-scanMove 4s infinite linear;
-
-
-}
-
-
-@keyframes scanMove{
-
-
-0%{
-
-top:-20%;
-
-}
-
-
-100%{
-
-top:120%;
-
-}
-
-
-}
-
-
-
-
-
-
-
-<!--作品 -->
-
-
-<section id="works" class="page hidden">
+<div class="profile-box">
 
 
 <h2>
-IMAGE DATABASE
+
+陈昊天
+
 </h2>
 
 
-<div id="works-list"
-class="grid">
+
+<p>
+
+方向：
+数字视觉 / 未来设计 / Web实验
+
+</p>
+
+
+<p>
+
+目标：
+建立个人数字世界系统
+
+</p>
+
+
+<p>
+
+STATUS:
+BUILDING FUTURE
+
+</p>
+
+
 
 </div>
+
+
+
+
+
+
+</div>
+
 
 
 </section>
@@ -422,20 +388,77 @@ class="grid">
 
 
 
-<!--博客 -->
 
 
-<section id="blog" class="page hidden">
+<!-- =====================
+作品数据库
+===================== -->
+
+
+<section
+
+id="works"
+
+class="page hidden">
+
 
 
 <h2>
-KNOWLEDGE DATABASE
+
+IMAGE DATABASE
+
 </h2>
+
+
+
+<div id="works-list"
+
+class="grid">
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =====================
+博客数据库
+===================== -->
+
+
+<section
+
+id="blog"
+
+class="page hidden">
+
+
+
+<h2>
+
+KNOWLEDGE DATABASE
+
+</h2>
+
+
 
 
 <div id="blog-list">
 
+
 </div>
+
+
 
 
 </section>
@@ -446,76 +469,138 @@ KNOWLEDGE DATABASE
 
 
 
-<!--关于 -->
 
 
-<section id="about" class="page hidden">
+<!-- =====================
+个人档案
+===================== -->
+
+
+<section
+
+id="about"
+
+class="page hidden">
+
+
+
 
 
 <h2>
+
 USER PROFILE
+
 </h2>
+
+
+
 
 
 <div class="profile">
 
 
+
 <p>
+
 姓名:
 陈昊天
+
 </p>
 
 
+
+
 <p>
+
 方向:
-数字视觉 / 未来设计
+Digital Design
+
 </p>
+
 
 
 <p>
+
 目标:
-建立个人数字世界
+Future Personal OS
+
 </p>
+
+
+
+
 
 
 
 <div class="skill">
+
 
 HTML
 
+
 <div>
-<span style="width:90%"></span>
-</div>
+
+<span style="width:90%">
+
+</span>
 
 </div>
+
+
+</div>
+
+
+
+
 
 
 
 <div class="skill">
+
 
 CSS
 
+
 <div>
-<span style="width:85%"></span>
-</div>
+
+<span style="width:85%">
+
+</span>
 
 </div>
+
+
+</div>
+
+
+
+
 
 
 
 <div class="skill">
 
+
 JavaScript
 
+
 <div>
-<span style="width:75%"></span>
-</div>
+
+<span style="width:75%">
+
+</span>
 
 </div>
 
 
+</div>
+
+
+
+
 
 </div>
+
 
 
 
@@ -523,24 +608,60 @@ JavaScript
 
 
 
+
+
+
+
+
 </div>
 
 
 </section>
+
+
+
+
+
+
+
+
+
+<!-- 图片查看器 -->
+
+<img
+
+id="viewer"
+
+class="viewer hidden"
+
+>
+
 
 
 
 <footer>
 
+
+<span>
+
 SYSTEM ONLINE
-
-<span id="clock">
-
-00:00
 
 </span>
 
+
+
+<span id="clock">
+
+00:00:00
+
+</span>
+
+
+
 </footer>
+
+
+
 
 
 </main>
@@ -549,10 +670,13 @@ SYSTEM ONLINE
 
 
 
+
+
 <script src="app.js"></script>
+
 
 
 </body>
 
-</html>
+
 </html>
