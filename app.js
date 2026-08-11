@@ -1,63 +1,36 @@
-/*
-=====================================================
-
- 陈昊天数字空间 OS
-
- PERSONAL_OS SYSTEM v4.0
-
- MATRIX BOOT
- CRT DESKTOP
- DIGITAL ARCHIVE
-
-=====================================================
-*/
-
-
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
 
 
-
-/* =====================================================
-   MATRIX DIGITAL RAIN
-===================================================== */
+/* =========================
+ MATRIX DIGITAL RAIN
+========================= */
 
 
 const canvas =
-document.getElementById(
-"matrix"
-);
-
+document.getElementById("matrix");
 
 
 if(canvas){
 
 
 const ctx =
-canvas.getContext(
-"2d"
-);
-
+canvas.getContext("2d");
 
 
 function resize(){
 
-
 canvas.width =
 window.innerWidth;
-
 
 canvas.height =
 window.innerHeight;
 
-
 }
 
 
-
 resize();
-
 
 
 window.addEventListener(
@@ -67,49 +40,23 @@ resize
 
 
 
-
 const chars =
-"01陈昊天数字空间系统启动ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオ";
+"01ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオ陈昊天DIGITAL";
 
 
-
-const fontSize = 18;
-
-
-
-let drops = [];
-
-
-
-function createDrops(){
-
-
-drops =
+let drops =
 Array(
-Math.floor(
-canvas.width / fontSize
-)
+Math.floor(canvas.width/18)
 )
 .fill(1);
 
 
-}
 
-
-
-createDrops();
-
-
-
-
-
-function matrixRain(){
-
+function draw(){
 
 
 ctx.fillStyle =
-"rgba(0,0,0,0.08)";
-
+"rgba(0,0,0,.08)";
 
 
 ctx.fillRect(
@@ -121,22 +68,17 @@ canvas.height
 
 
 
-
 ctx.fillStyle =
 "#00ff88";
 
 
-
 ctx.font =
-fontSize +
-"px monospace";
-
+"18px monospace";
 
 
 
 drops.forEach(
-(y,index)=>{
-
+(y,i)=>{
 
 
 const text =
@@ -147,34 +89,24 @@ Math.random()*chars.length
 ];
 
 
-
 ctx.fillText(
 text,
-index*fontSize,
-y*fontSize
+i*18,
+y*18
 );
 
 
 
-
-
 if(
-y*fontSize >
-canvas.height
-&&
-Math.random()>0.975
+y*18 > canvas.height
 ){
 
-
-drops[index]=0;
-
+drops[i]=0;
 
 }
 
 
-
-drops[index]++;
-
+drops[i]++;
 
 
 });
@@ -183,12 +115,10 @@ drops[index]++;
 }
 
 
-
 setInterval(
-matrixRain,
+draw,
 50
 );
-
 
 
 }
@@ -197,13 +127,9 @@ matrixRain,
 
 
 
-
-
-
-
-/* =====================================================
-   ENTER SYSTEM
-===================================================== */
+/* =========================
+ ENTER SYSTEM
+========================= */
 
 
 const enter =
@@ -216,14 +142,18 @@ document.getElementById(
 if(enter){
 
 
-
 enter.onclick=()=>{
-
 
 
 const intro =
 document.getElementById(
 "matrix-intro"
+);
+
+
+const system =
+document.getElementById(
+"system"
 );
 
 
@@ -235,22 +165,12 @@ intro.style.opacity="0";
 
 setTimeout(()=>{
 
-
 intro.remove();
-
 
 },1000);
 
 
 }
-
-
-
-
-const system =
-document.getElementById(
-"system"
-);
 
 
 
@@ -260,20 +180,14 @@ system.classList.remove(
 "hidden"
 );
 
+
 }
-
-
-
-console.log(
-"BOOT COMPLETE"
-);
 
 
 
 };
 
 
-
 }
 
 
@@ -282,60 +196,41 @@ console.log(
 
 
 
-
-
-/* =====================================================
-   PAGE SYSTEM
-===================================================== */
-
+/* =========================
+ PAGE SWITCH
+========================= */
 
 
 function openPage(id){
 
 
-
 document
-.querySelectorAll(
-".page"
-)
+.querySelectorAll(".page")
 .forEach(
 page=>{
-
 
 page.classList.add(
 "hidden"
 );
 
-
-
 });
 
 
-
-
 const target =
-document.getElementById(
-id
-);
+document.getElementById(id);
 
 
 
 if(target){
 
-
 target.classList.remove(
 "hidden"
 );
 
-
 }
 
 
 }
-
-
-
-
 
 
 
@@ -344,21 +239,18 @@ document
 "nav span"
 )
 .forEach(
-button=>{
+btn=>{
 
 
-
-button.onclick=()=>{
+btn.onclick=()=>{
 
 
 openPage(
-button.dataset.page
+btn.dataset.page
 );
 
 
-
 };
-
 
 
 });
@@ -369,13 +261,9 @@ button.dataset.page
 
 
 
-
-
-
-
-/* =====================================================
-   SYSTEM CLOCK
-===================================================== */
+/* =========================
+ CLOCK
+========================= */
 
 
 const clock =
@@ -388,10 +276,7 @@ document.getElementById(
 function updateClock(){
 
 
-if(!clock)
-return;
-
-
+if(clock){
 
 clock.innerHTML =
 new Date()
@@ -402,6 +287,8 @@ hour12:false
 }
 );
 
+
+}
 
 
 }
@@ -414,7 +301,6 @@ updateClock,
 );
 
 
-
 updateClock();
 
 
@@ -423,76 +309,56 @@ updateClock();
 
 
 
+/* =========================
+ WORK DATABASE
+========================= */
 
 
-
-
-/* =====================================================
-   WORK ARCHIVE
-===================================================== */
-
-
-
-const works = [
-
+const works=[
 
 "work01.jpg",
-
 "work02.jpg",
-
 "work03.jpg"
-
 
 ];
 
 
 
-
-const workBox =
+const box =
 document.getElementById(
 "works-list"
 );
 
 
 
-
-
-if(workBox){
-
+if(box){
 
 
 works.forEach(
-(item)=>{
+(work)=>{
 
 
-
-workBox.innerHTML += `
-
-
-<div class="work"
-data-image="assets/works/${item}">
+box.innerHTML +=`
 
 
-<img src="assets/works/${item}">
+<div class="work">
+
+
+<img src="assets/works/${work}">
 
 
 <p>
-
-PROJECT_${item}
-
+PROJECT_${work}
 </p>
 
 
 </div>
 
 
-
 `;
 
 
-
 });
-
 
 
 }
@@ -502,15 +368,9 @@ PROJECT_${item}
 
 
 
-
-
-
-
-
-
-/* =====================================================
-   IMAGE VIEWER
-===================================================== */
+/* =========================
+ IMAGE VIEWER
+========================= */
 
 
 const viewer =
@@ -520,55 +380,34 @@ document.getElementById(
 
 
 
-const viewerImage =
-document.getElementById(
-"viewer-image"
-);
+document
+.querySelectorAll(
+".work img"
+)
+.forEach(
+img=>{
 
 
-
-
-document.addEventListener(
-"click",
-(e)=>{
-
-
-
-const target =
-e.target.closest(
-".work"
-);
-
-
-
-if(!target)
-return;
-
-
-
-const img =
-target.dataset.image;
-
-
-
-if(viewerImage){
-
-viewerImage.src =
-img;
-
-
-}
-
+img.onclick=()=>{
 
 
 if(viewer){
+
+
+viewer.src =
+img.src;
+
 
 viewer.classList.remove(
 "hidden"
 );
 
+
 }
 
+
+
+};
 
 
 });
@@ -576,229 +415,10 @@ viewer.classList.remove(
 
 
 
-
-
-const closeViewer =
-document.getElementById(
-"viewer-close"
-);
-
-
-
-if(closeViewer){
-
-
-closeViewer.onclick=()=>{
-
-
-viewer.classList.add(
-"hidden"
-);
-
-
-};
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   BLOG DATABASE PLACEHOLDER
-
-   Future:
-
-   Supabase
-
-   posts table
-
-
-===================================================== */
-
-
-const blogBox =
-document.getElementById(
-"blog-list"
-);
-
-
-
-if(blogBox){
-
-
-
-const demoBlogs=[
-
-
-"建立我的数字空间",
-
-"Y2K CRT视觉实验",
-
-"未来数字档案计划"
-
-
-];
-
-
-
-
-demoBlogs.forEach(
-(blog,index)=>{
-
-
-blogBox.innerHTML += `
-
-
-<div class="blog-item">
-
-
-ID:
-00${index+1}
-
-
-<br>
-
-
-TITLE:
-
-${blog}
-
-
-
-<br>
-
-STATUS:
-
-ONLINE
-
-
-</div>
-
-
-
-`;
-
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   COMMENT PLACEHOLDER
-
-===================================================== */
-
-
-const send =
-document.getElementById(
-"send-comment"
-);
-
-
-
-if(send){
-
-
-send.onclick=()=>{
-
-
-const input =
-document.getElementById(
-"comment-input"
-);
-
-
-
-const list =
-document.getElementById(
-"comment-list"
-);
-
-
-
-if(
-!input ||
-!list ||
-input.value.trim()==""
-)
-return;
-
-
-
-
-list.innerHTML += `
-
-
-<p>
-
-USER:
-
-${input.value}
-
-
-</p>
-
-
-`;
-
-
-
-input.value="";
-
-
-
-};
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   SYSTEM READY
-===================================================== */
 
 
 console.log(
-`
-===========================
-
- PERSONAL_OS ONLINE
-
- MATRIX : OK
-
- CRT : OK
-
- ARCHIVE : OK
-
- DATABASE : WAITING
-
-===========================
-`
+"DIGITAL ARCHIVE SYSTEM ONLINE"
 );
 
 
