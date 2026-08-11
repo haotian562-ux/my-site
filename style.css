@@ -1,1598 +1,383 @@
-/* =====================================================
-   中文 Y2K CRT DIGITAL SPACE OS
-   STYLE SYSTEM v2.0
-===================================================== */
-
-
 /* ===============================
-   全局设置
-================================ */
-
+   全局样式与变量
+================================= */
+:root {
+    --primary-color: #33ff00;
+    --secondary-color: #008f1a;
+    --bg-color: #0d0d0d;
+    --text-color: #e0e0e0;
+    --font-pixel: 'Press Start 2P', cursive;
+    --crt-scanline-color: rgba(18, 16, 16, 0.5);
+}
 
 * {
-
-    box-sizing:border-box;
-
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-
-html,
 body {
-
-
-    width:100%;
-
-    height:100%;
-
-
-    margin:0;
-
-
-    overflow:hidden;
-
-
-    background:#001000;
-
-
-    color:#d8ffd8;
-
-
-    font-family:
-
-    "Press Start 2P",
-    "Microsoft YaHei",
-    monospace;
-
-
-    font-size:13px;
-
-
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-pixel);
+    font-size: 12px;
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
-
-
-
-button,
-textarea {
-
-
-    font-family:inherit;
-
-
-}
-
-
-
-
 
 /* ===============================
-   CRT 扫描线效果
-================================ */
-
-
+   CRT 显示器效果
+================================= */
 .crt-overlay {
-
-
-    position:fixed;
-
-
-    inset:0;
-
-
-    z-index:9999;
-
-
-    pointer-events:none;
-
-
-
-    background:
-
-
-
-    linear-gradient(
-
-        rgba(0,0,0,0) 50%,
-
-        rgba(0,0,0,.25) 50%
-
-    ),
-
-
-
-    linear-gradient(
-
-        90deg,
-
-        rgba(255,0,0,.05),
-
-        rgba(0,255,0,.03),
-
-        rgba(0,0,255,.05)
-
-    );
-
-
-
-    background-size:
-
-
-    100% 4px,
-
-
-    5px 100%;
-
-
-
-    animation:
-
-    crt-flicker .18s infinite;
-
-
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 999;
 }
-
-
-
-
-
-@keyframes crt-flicker {
-
-
-0%{
-
-opacity:.96;
-
-}
-
-
-50%{
-
-opacity:1;
-
-}
-
-
-100%{
-
-opacity:.98;
-
-}
-
-
-}
-
-
-
-
-
-/* =============================== CRT 扫描线效果 ================================ */
-/* ... 其他代码 ... */
 
 .crt-vignette {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  /* 新增的曲面效果代码 */
-  background: 
-    /* 第一层：模拟屏幕中心凸起的反光 */
-    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%),
-    /* 第二层：模拟屏幕四周的暗角（Vignette） */
-    radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.85) 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 998;
 }
 
+/* ===============================
+   启动界面
+================================= */
+#boot-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: var(--primary-color);
+}
 
 .boot-window {
-
-
-width:520px;
-
-
-padding:25px;
-
-
-background:#001800;
-
-
-border:
-
-
-4px solid #39ff14;
-
-
-
-box-shadow:
-
-
-10px 10px 0 #ff00cc;
-
-
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    padding: 20px;
+    box-shadow: 0 0 10px var(--primary-color);
 }
-
-
 
 .window-title {
-
-
-background:#39ff14;
-
-
-color:#001000;
-
-
-padding:12px;
-
-
-margin:-25px -25px 20px;
-
-
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed var(--primary-color);
+    padding-bottom: 10px;
 }
-
-
-
 
 #boot-text {
-
-
-line-height:2;
-
-
-color:white;
-
-
-text-shadow:
-
-0 0 8px #39ff14;
-
-
+    text-align: left;
+    margin-bottom: 20px;
+    min-height: 120px;
 }
-
-
-
 
 .loading-bar {
-
-
-height:20px;
-
-
-border:
-
-2px solid white;
-
-
-margin-top:20px;
-
-
+    width: 100%;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    padding: 2px;
 }
-
-
 
 .loading-progress {
-
-
-height:100%;
-
-
-width:0;
-
-
-background:
-
-
-linear-gradient(
-
-90deg,
-
-#39ff14,
-
-#ffff00,
-
-#ff00cc
-
-);
-
-
-animation:
-
-loading 3s forwards;
-
-
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0%;
+    animation: loading 3s ease-in-out forwards;
 }
-
 
 @keyframes loading {
-
-
-to{
-
-width:100%;
-
+    0% { width: 0%; }
+    100% { width: 100%; }
 }
-
-}
-
-
-
-
-
-
-
-
 
 /* ===============================
-   桌面
-================================ */
-
-
-
+   桌面系统
+================================= */
 #desktop {
-
-
-width:100vw;
-
-
-height:100vh;
-
-
-
-background:
-
-
-radial-gradient(
-
-circle,
-
-#003b00,
-
-#000
-
-);
-
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
+    display: none; /* 初始隐藏，启动后显示 */
+    height: 100%;
+    flex-direction: column;
+    position: relative;
 }
-
-
-
-
-
-/* ===============================
-   顶部菜单
-================================ */
-
 
 .menu-bar {
-
-
-height:45px;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-padding:0 20px;
-
-
-background:#111;
-
-
-
-border-bottom:
-
-
-3px solid #39ff14;
-
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    padding: 10px;
+    font-size: 10px;
 }
-
-
-
 
 .menu-logo {
-
-
-color:#ff00cc;
-
-
-margin-right:35px;
-
-
+    font-weight: bold;
 }
 
-
-
-.menu-bar nav {
-
-
-display:flex;
-
-
-gap:20px;
-
-
+nav span {
+    margin-left: 15px;
+    cursor: pointer;
 }
 
-
-
-
-.menu-bar span {
-
-
-cursor:pointer;
-
-
-padding:8px;
-
-
+nav span:hover {
+    text-decoration: underline;
 }
-
-
-
-.menu-bar span:hover {
-
-
-background:#ffff00;
-
-
-color:#000;
-
-
-}
-
-
-
-
-
-
-
-/* ===============================
-   桌面图标
-================================ */
-
-
 
 .desktop-icons {
-
-
-position:absolute;
-
-
-top:70px;
-
-
-left:20px;
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
-gap:25px;
-
-
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
-
-
-
 
 .pixel-icon {
-
-
-text-align:center;
-
-
-cursor:pointer;
-
-
-transition:.2s;
-
-
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
 }
-
-
-
-.pixel-icon:hover {
-
-
-transform:scale(1.12);
-
-
-color:#ff00cc;
-
-
-}
-
-
-
 
 .icon-image {
-
-
-font-size:36px;
-
-
-filter:
-
-
-drop-shadow(
-
-0 0 8px #39ff14
-
-);
-
-
-
+    font-size: 32px;
+    margin-bottom: 5px;
 }
 
+.pixel-icon span {
+    display: block;
+    font-size: 10px;
+    color: var(--primary-color);
+}
 
-
-
-
-
+.pixel-icon:hover {
+    background-color: rgba(51, 255, 0, 0.1);
+}
 
 /* ===============================
-   窗口系统
-================================ */
-
-
-.window {
-
-
-background:
-
-
-rgba(0,25,0,.95);
-
-
-border:
-
-
-3px solid #39ff14;
-
-
-box-shadow:
-
-
-8px 8px 0 #ff00cc;
-
-
-}
-
-
-
+   主窗口
+================================= */
 .main-window {
-
-
-position:absolute;
-
-
-left:210px;
-
-
-top:90px;
-
-
-width:
-
-
-calc(100vw - 260px);
-
-
-
-height:
-
-
-calc(100vh - 160px);
-
-
-
+    flex-grow: 1;
+    margin: 10px;
+    border: 2px solid var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px var(--primary-color);
 }
-
-
-
 
 .window-header {
-
-
-height:42px;
-
-
-background:
-
-
-linear-gradient(
-
-90deg,
-
-#39ff14,
-
-#ffff00
-
-);
-
-
-
-color:#000;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:space-between;
-
-
-padding:0 10px;
-
-
-cursor:move;
-
-
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    cursor: move;
 }
-
-
-
 
 .window-controls button {
-
-
-width:30px;
-
-
-height:25px;
-
-
-border:
-
-
-2px solid #000;
-
-
-
-background:#ff00cc;
-
-
-cursor:pointer;
-
-
+    background: none;
+    border: 1px solid var(--bg-color);
+    color: var(--bg-color);
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-family: var(--font-pixel);
 }
-
-
 
 .window-controls button:hover {
-
-
-background:white;
-
-
+    background-color: var(--bg-color);
+    color: var(--primary-color);
 }
-
-
-
 
 .window-menu {
-
-
-padding:12px;
-
-
-border-bottom:
-
-
-2px solid #39ff14;
-
-
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    padding: 5px 10px;
+    font-size: 10px;
+    border-bottom: 1px solid var(--primary-color);
 }
-
-
 
 .window-content {
-
-
-padding:25px;
-
-
-overflow:auto;
-
-
-height:
-
-
-calc(100% - 80px);
-
-
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    position: relative;
 }
-
-
-
-
 
 /* ===============================
-   页面切换
-================================ */
-
-
-
-.hidden {
-
-
-display:none!important;
-
-
-}
-
-
-
+   页面内容样式
+================================= */
 .page {
-
-
-animation:
-
-appear .3s;
-
-
+    display: none;
+    height: 100%;
 }
 
-
-
-@keyframes appear {
-
-
-from{
-
-opacity:0;
-
-transform:translateY(10px);
-
+.page.active {
+    display: block;
 }
 
-
-to{
-
-opacity:1;
-
-}
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-   首页资料
-================================ */
-
-
-.profile-panel {
-
-
-display:flex;
-
-
-align-items:center;
-
-
-gap:40px;
-
-
-}
-
-
-
-.pixel-avatar img {
-
-
-width:130px;
-
-
-height:130px;
-
-
-image-rendering:pixelated;
-
-
-
-border:
-
-
-5px solid #ff00cc;
-
-
-
-box-shadow:
-
-
-0 0 20px #ff00cc;
-
-
-}
-
-
-
-
-h1,
-h2,
-h3 {
-
-
-color:#ffff00;
-
-
-text-shadow:
-
-
-3px 3px #ff00cc;
-
-
-}
-
-
-
-
-
-
-.pixel-button {
-
-
-padding:15px;
-
-
-background:#39ff14;
-
-
-color:#000;
-
-
-border:
-
-
-4px solid #000;
-
-
-cursor:pointer;
-
-
-margin-top:20px;
-
-
-}
-
-
-
-.pixel-button:hover {
-
-
-background:#ff00cc;
-
-
-color:white;
-
-
-animation:
-
-blink .3s infinite;
-
-
-}
-
-
-
-
-@keyframes blink {
-
-
-50%{
-
-filter:brightness(2);
-
-}
-
-}
-
-
-
-
-
-
-
-
-/* ===============================
-   状态面板
-================================ */
-
-
-.status-panel {
-
-
-margin-top:30px;
-
-
-border:
-
-
-3px solid #ffff00;
-
-
-padding:20px;
-
-
-}
-
-
-
-.status-grid {
-
-
-display:grid;
-
-
-grid-template-columns:
-
-
-repeat(4,1fr);
-
-
-gap:15px;
-
-
-}
-
-
-
-
-.status-grid div {
-
-
-padding:20px;
-
-
-background:#002000;
-
-
-border:
-
-
-2px solid #39ff14;
-
-
-text-align:center;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-   数据图表
-================================ */
-
-
-
-.graph-window {
-
-
-margin-top:30px;
-
-
-border:
-
-
-3px solid white;
-
-
-padding:20px;
-
-
-}
-
-
-
-.bars {
-
-
-height:150px;
-
-
-display:flex;
-
-
-align-items:flex-end;
-
-
-gap:20px;
-
-
-}
-
-
-
-
-.bars div {
-
-
-width:45px;
-
-
-background:
-
-
-linear-gradient(
-
-#ff00cc,
-
-#ffff00
-
-);
-
-
-animation:
-
-datawave 2s infinite;
-
-
-}
-
-
-
-
-@keyframes datawave {
-
-
-50%{
-
-height:90%;
-
-}
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-   博客终端
-================================ */
-
-
-
-.terminal {
-
-
-border:
-
-
-3px solid #39ff14;
-
-
-}
-
-
-
-
-.terminal-header {
-
-
-padding:15px;
-
-
-background:#39ff14;
-
-
-color:#000;
-
-
-}
-
-
-
-.terminal-body {
-
-
-padding:20px;
-
-
-line-height:2;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-   作品文件管理器
-================================ */
-
-
-
-.file-manager {
-
-
-border:
-
-
-3px solid #ffff00;
-
-
-}
-
-
-
-.file-header {
-
-
-padding:15px;
-
-
-background:#ffff00;
-
-
-color:#000;
-
-
-}
-
-
-
-.file-grid {
-
-
-display:grid;
-
-
-grid-template-columns:
-
-
-repeat(3,1fr);
-
-
-gap:20px;
-
-
-padding:20px;
-
-
-}
-
-
-
-
-.file-grid img {
-
-
-width:100%;
-
-
-height:180px;
-
-
-object-fit:cover;
-
-
-border:
-
-
-3px solid #39ff14;
-
-
-}
-
-
-
-.file-grid img:hover {
-
-
-border-color:#ff00cc;
-
-
-transform:scale(1.03);
-
-
-}
-
-
-
-
-
-
-
-
-/* ===============================
-   评论终端
-================================ */
-
-
-
-textarea {
-
-
-width:100%;
-
-
-height:120px;
-
-
-background:#000;
-
-
-color:#39ff14;
-
-
-border:
-
-
-2px solid #39ff14;
-
-
-padding:15px;
-
-
-resize:none;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-   图片查看器
-================================ */
-
-
-
-.image-viewer {
-
-
-position:fixed;
-
-
-top:100px;
-
-
-left:50%;
-
-
-transform:translateX(-50%);
-
-
-width:520px;
-
-
-z-index:2000;
-
-
-padding-bottom:20px;
-
-
-}
-
-
-
-
-.image-viewer img {
-
-
-display:block;
-
-
-width:90%;
-
-
-margin:20px auto;
-
-
-}
-
-
-
-
-
-/* ===============================
-   状态栏
-================================ */
-
-
-.status-bar {
-
-
-position:fixed;
-
-
-bottom:0;
-
-
-height:35px;
-
-
-width:100%;
-
-
-background:#111;
-
-
-border-top:
-
-
-3px solid #39ff14;
-
-
-display:flex;
-
-
-justify-content:space-between;
-
-
-align-items:center;
-
-
-padding:0 20px;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-   手机适配
-================================ */
-
-
-@media(max-width:800px){
-
-
-
-body{
-
-
-font-size:10px;
-
-
-}
-
-
-
-
-.main-window {
-
-
-left:10px;
-
-
-width:
-
-
-calc(100vw - 20px);
-
-
-}
-
-
-
-.desktop-icons {
-
-
-display:none;
-
-
-}
-
-
-
-.profile-panel {
-
-
-flex-direction:column;
-
-
-}
-
-
-
-.status-grid {
-
-
-grid-template-columns:
-
-
-repeat(2,1fr);
-
-
-}
-
-
-
-.file-grid {
-
-
-grid-template-columns:
-
-
-1fr;
-
-
-}
-
-
-
-.menu-bar nav {
-
-
-display:none;
-
-
-}
-
-
-
-.image-viewer {
-
-
-width:90vw;
-
-
-}
-
-
-}
-
-/* =============================== CRT 桶形畸变（向外凸）效果 ================================ */
-.crt-screen {
-  /* 让屏幕占满整个浏览器窗口 */
-  width: 100vw;
-  height: 100vh;
-  
-  /* 核心代码：通过贝塞尔曲线让边缘向外凸出 */
-  clip-path: path('M0,0 C0,0 0,100vh 0,100vh C0,100vh -5vw,50vh -5vw,50vh C-5vw,50vh 0,0 0,0 C0,0 50vw,-5vh 50vw,-5vh C50vw,-5vh 100vw,0 100vw,0 C100vw,0 105vh,50vh 105vh,50vh C105vh,50vh 100vw,100vh 100vw,100vh C100vw,100vh 50vw,105vh 50vw,105vh C50vw,105vh 0,100vh 0,100vh Z');
-  
-  /* 防止内容溢出 */
-  overflow: hidden;
-  
-  /* 定位在最底层，但要在背景之上 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-/* 让扫描线和暗角效果覆盖在凸起的屏幕之上 */
-.crt-overlay, .crt-vignette {
-  z-index: 2;
-}
-
-/* =============================== 赛博档案/HUD 风格组件 ================================ */
-
-/* 1. 全局背景网格 (模拟图纸背景) */
+/* --- 首页赛博档案风格 --- */
 .cyber-grid-bg {
-  background-color: #050505;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px; /* 网格大小 */
-  position: relative;
-  overflow: hidden;
+    background-image: 
+        linear-gradient(rgba(51, 255, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(51, 255, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: #050505;
+    position: relative;
+    overflow: hidden;
 }
 
-/* 2. 核心容器：带有四角括号的 HUD 框 */
 .hud-container {
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 40px;
-  margin: 20px;
-  /* 模拟图中那种发光的细线框 */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05) inset; 
+    position: relative;
+    color: var(--primary-color);
 }
 
-/* 四角装饰 (括号效果) */
-.hud-container::before, .hud-container::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #fff;
-  transition: all 0.3s ease;
-}
-
-.hud-container::before {
-  top: -1px; left: -1px;
-  border-right: none; border-bottom: none;
-}
-
-.hud-container::after {
-  bottom: -1px; right: -1px;
-  border-left: none; border-top: none;
-}
-
-/* 3. 图片处理：模拟 X光/全息投影感 */
 .cyber-img {
-  width: 100%;
-  height: auto;
-  filter: grayscale(100%) contrast(1.2) brightness(1.1);
-  opacity: 0.8;
-  /* 关键：让图片与背景融合，产生通透感 */
-  mix-blend-mode: screen; 
+    width: 100%;
+    display: block;
+    filter: grayscale(100%) contrast(1.2) brightness(0.8);
+    border: 1px solid var(--primary-color);
 }
 
-/* 4. 装饰性数据文字 */
 .tech-text {
-  font-family: 'Courier New', Courier, monospace; /* 等宽字体 */
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  position: absolute;
+    position: absolute;
+    font-size: 8px;
+    text-shadow: 0 0 5px var(--primary-color);
+    pointer-events: none;
 }
 
-/* 定位示例：左上角编号 */
 .pos-tl { top: 10px; left: 10px; }
-/* 定位示例：右下角状态 */
 .pos-br { bottom: 10px; right: 10px; text-align: right; }
-/* 定位示例：中心标签 */
 .pos-center-label {
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 5px 10px;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(2px);
-}
-
-/* 5. 动态扫描线动画 (可选) */
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    padding: 2px 5px;
+    border: 1px solid var(--primary-color);
 }
 
 .scan-line {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.02) 51%, transparent 52%);
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(51, 255, 0, 0.3);
+    animation: scan 3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+/* ===============================
+   其他组件样式
+================================= */
+.terminal, .file-manager, .config-window {
+    color: var(--primary-color);
+    font-size: 10px;
+}
+
+.terminal-header, .file-header {
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.pixel-button {
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    padding: 10px;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.pixel-button:hover {
+    background-color: var(--primary-color);
+}
+
+.skill {
+    margin: 10px 0;
+}
+
+.skill div {
+    border: 1px solid var(--primary-color);
+    height: 10px;
+    margin-top: 5px;
+}
+
+.skill div span {
+    display: block;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+/* ===============================
+   图片查看器
+================================= */
+.image-viewer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-color: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-viewer img {
+    max-width: 100%;
+    max-height: 80%;
+    border: 1px solid var(--primary-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ===============================
+   状态栏
+================================= */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    padding: 5px 10px;
+    font-size: 10px;
+    border-top: 2px solid var(--primary-color);
 }
