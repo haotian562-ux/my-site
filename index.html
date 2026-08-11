@@ -5,19 +5,17 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>
-陈昊天数字空间 OS
+陈昊天 Digital Archive
 </title>
 
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+
 <link rel="stylesheet" href="style.css">
-
-
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 
 </head>
 
@@ -25,152 +23,88 @@
 <body>
 
 
-<!-- ==========================
- MATRIX代码雨入口
-========================== -->
+<!-- CRT -->
+<div class="crt"></div>
 
+
+<!-- MATRIX入口 -->
 
 <section id="matrix-intro">
 
+<canvas id="matrix"></canvas>
 
-<canvas id="matrix-canvas"></canvas>
 
-
-<div class="matrix-ui">
+<div class="matrix-panel">
 
 
 <h1>
-陈昊天数字空间
+DIGITAL ARCHIVE
 </h1>
 
 
 <p>
-DIGITAL SPACE OPERATING SYSTEM
+正在连接个人数字档案...
 </p>
 
 
 <p>
-正在建立数字身份...
+IDENTITY SCAN : ONLINE
 </p>
 
 
-
-<button id="enter-system">
-
-进入数字空间
-
+<button id="enter">
+进入系统
 </button>
 
 
 </div>
 
-
 </section>
 
 
 
 
 
-<!-- ==========================
- CRT启动界面
-========================== -->
+<!-- 主系统 -->
 
 
-<section id="boot-screen">
-
-
-<div class="boot-window">
-
-
-<div class="window-title">
-
-系统启动程序 SYSTEM BOOT
-
-</div>
+<main id="system" class="hidden">
 
 
 
-<div id="boot-text">
+<header class="topbar">
 
 
-&gt; 初始化中文数字空间...<br>
+<div>
 
-&gt; 检测用户身份...<br>
-
-&gt; 加载视觉模块...<br>
-
-&gt; 开启CRT显示模式...<br>
-
-&gt; 数据连接成功...
-
-
+DIGITAL ARCHIVE OS v4.0
 
 </div>
-
-
-
-<div class="loading-bar">
-
-<div class="loading-progress">
-
-</div>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ==========================
- CRT桌面
-========================== -->
-
-
-<div id="desktop">
-
-
-
-
-
-<!-- 顶部菜单 -->
-
-
-<header class="menu-bar">
-
-
-<div class="menu-logo">
-
-◉ 陈昊天 OS
-
-</div>
-
 
 
 <nav>
 
+<span data-page="home">
+首页
+</span>
 
-<span>首页</span>
 
-<span>博客</span>
+<span data-page="works">
+作品数据库
+</span>
 
-<span>作品</span>
 
-<span>关于</span>
+<span data-page="blog">
+知识日志
+</span>
 
-<span>留言</span>
+
+<span data-page="about">
+用户档案
+</span>
 
 
 </nav>
-
 
 
 </header>
@@ -179,129 +113,19 @@ DIGITAL SPACE OPERATING SYSTEM
 
 
 
+<section class="archive-window">
 
 
 
-<!-- 桌面图标 -->
+<div class="window-title">
 
 
-<div class="desktop-icons">
-
-
-
-<div class="pixel-icon"
-data-page="home">
-
-<div class="icon-image">
-
-💻
-
-</div>
-
-主页.exe
-
-</div>
-
-
-
-
-
-<div class="pixel-icon"
-data-page="blog">
-
-<div class="icon-image">
-
-📟
-
-</div>
-
-博客.log
-
-</div>
-
-
-
-
-
-
-<div class="pixel-icon"
-data-page="works">
-
-<div class="icon-image">
-
-📁
-
-</div>
-
-作品库.dir
-
-</div>
-
-
-
-
-
-
-<div class="pixel-icon"
-data-page="about">
-
-<div class="icon-image">
-
-👤
-
-</div>
-
-用户档案.cfg
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- ==========================
-主窗口
-========================== -->
-
-
-<section class="window main-window">
-
-
-
-<div class="window-header">
-
-
-<span>
-
-PERSONAL_OS.exe
-
-</span>
+PERSONAL ARCHIVE SYSTEM
 
 
 <div>
 
-
-<button class="minimize">
-
-—
-
-</button>
-
-
-<button class="close">
-
-×
-
-</button>
-
+□ ×
 
 </div>
 
@@ -312,18 +136,7 @@ PERSONAL_OS.exe
 
 
 
-<div class="window-menu">
-
-文件　编辑　查看　数据　工具　窗口　帮助
-
-</div>
-
-
-
-
-
-
-<div class="window-content">
+<div class="content">
 
 
 
@@ -332,48 +145,76 @@ PERSONAL_OS.exe
 <!-- 首页 -->
 
 
-<section id="home"
-class="page">
+<section id="home" class="page">
+
+
+<div class="hud">
 
 
 
-<h2>
-
-欢迎进入我的数字空间
-
-</h2>
+<div class="scan"></div>
 
 
-<div class="terminal">
+
+<div class="info">
 
 
-USER:
+<p>
+SYS_ID:
+CH562
+</p>
 
-陈昊天
 
-<br>
-
-
+<p>
 STATUS:
-
 ONLINE
-
-<br>
-
-
-SYSTEM:
-
-Y2K CRT MODE
-
-<br>
+</p>
 
 
-MEMORY:
+<p>
+DATABASE:
+ACTIVE
+</p>
 
-98%
 
 </div>
 
+
+
+<img src="assets/avatar.png">
+
+
+
+<div class="data-box">
+
+
+<h2>
+陈昊天
+</h2>
+
+
+<p>
+视觉设计 / 数字实验
+</p>
+
+
+<p>
+MEMORY:
+98%
+</p>
+
+
+<p>
+CONNECTION:
+ONLINE
+</p>
+
+
+</div>
+
+
+
+</div>
 
 
 </section>
@@ -384,71 +225,44 @@ MEMORY:
 
 
 
-<!-- 博客 -->
+<!--作品 -->
 
 
-<section id="blog"
-class="page hidden">
+<section id="works" class="page hidden">
 
 
+<h2>
+IMAGE DATABASE
+</h2>
 
-<div class="terminal">
 
-
-<div class="terminal-header">
-
-博客数据库 BLOG_DATABASE
+<div id="works-list"
+class="grid">
 
 </div>
 
+
+</section>
+
+
+
+
+
+
+
+<!--博客 -->
+
+
+<section id="blog" class="page hidden">
+
+
+<h2>
+KNOWLEDGE DATABASE
+</h2>
 
 
 <div id="blog-list">
 
-
-</div>
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- 作品 -->
-
-
-<section id="works"
-class="page hidden">
-
-
-
-<div class="file-manager">
-
-
-<h3>
-
-作品提取器 IMAGE EXTRACTOR
-
-</h3>
-
-
-
-<div id="works-list"
-class="file-grid">
-
-
-</div>
-
-
-
 </div>
 
 
@@ -460,253 +274,104 @@ class="file-grid">
 
 
 
+<!--关于 -->
 
 
-<!-- 关于 -->
-
-
-<section id="about"
-class="page hidden">
-
-
-
-<div class="config-window">
-
+<section id="about" class="page hidden">
 
 
 <h2>
-
-用户档案 USER_PROFILE
-
+USER PROFILE
 </h2>
 
 
-
-<p>
-
-姓名：陈昊天
-
-</p>
+<div class="profile">
 
 
 <p>
-
-身份：数字创作者
-
-</p>
-
-
-
-<h3>
-
-技能
-
-</h3>
-
-
-
-<p>
-
-HTML █████████ 90%
-
+姓名:
+陈昊天
 </p>
 
 
 <p>
-
-CSS ████████ 85%
-
+方向:
+数字视觉 / 未来设计
 </p>
 
 
 <p>
-
-JavaScript ███████ 75%
-
+目标:
+建立个人数字世界
 </p>
 
 
 
-<h3>
+<div class="skill">
 
-目标
-
-</h3>
-
-
-
-<ul>
-
-
-<li>
-创造个人数字世界
-</li>
-
-
-<li>
-探索未来视觉语言
-</li>
-
-
-<li>
-保存互联网记忆
-</li>
-
-
-</ul>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 留言 -->
-
-
-<section id="message"
-class="page hidden">
-
-
-
-<div class="terminal">
-
-
-<h3>
-
-访客留言系统
-
-</h3>
-
-
-<div id="comment-list">
-
-等待留言...
-
-</div>
-
-
-
-<textarea id="comment-input"
-placeholder="输入留言">
-
-</textarea>
-
-
-<button id="send-comment">
-
-发送
-
-</button>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- 图片查看器 -->
-
-
-<div id="image-viewer"
-class="window hidden">
-
-
-
-<div class="window-header">
-
-
-图片查看器
-
-
-<button class="close-viewer">
-
-×
-
-</button>
-
-
-</div>
-
-
-<img id="viewer-image">
-
-
-<p id="viewer-description">
-
-图片信息
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- 状态栏 -->
-
-
-<footer class="status-bar">
-
+HTML
 
 <div>
-
-系统运行正常
+<span style="width:90%"></span>
+</div>
 
 </div>
 
 
 
-<div id="clock">
+<div class="skill">
 
-00:00:00
+CSS
+
+<div>
+<span style="width:85%"></span>
+</div>
 
 </div>
 
 
+
+<div class="skill">
+
+JavaScript
+
+<div>
+<span style="width:75%"></span>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+</div>
+
+
+</section>
+
+
+
+<footer>
+
+SYSTEM ONLINE
+
+<span id="clock">
+
+00:00
+
+</span>
 
 </footer>
 
 
-
-
-</div>
-
-
-
+</main>
 
 
 
@@ -715,8 +380,7 @@ class="window hidden">
 <script src="app.js"></script>
 
 
-
 </body>
 
-
+</html>
 </html>
