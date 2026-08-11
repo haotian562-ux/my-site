@@ -1,1067 +1,722 @@
-/* =====================================================
-   中文 Y2K CRT DIGITAL SPACE OS
-   FRONTEND SYSTEM v3.0
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-   MATRIX BOOT
-   CRT DESKTOP
-   BLOG
-   WORKS
-   COMMENTS
-===================================================== */
+<head>
 
+<meta charset="UTF-8">
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+<title>
+陈昊天数字空间 OS
+</title>
 
-/* =====================================================
-   01 MATRIX DIGITAL RAIN 启动页
-===================================================== */
 
+<link rel="stylesheet" href="style.css">
 
-function initMatrix(){
 
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-const canvas =
-document.getElementById(
-"matrix-canvas"
-);
 
+</head>
 
 
-if(!canvas)return;
+<body>
 
 
+<!-- ==========================
+ MATRIX代码雨入口
+========================== -->
 
-const ctx =
-canvas.getContext(
-"2d"
-);
 
+<section id="matrix-intro">
 
 
-function resize(){
+<canvas id="matrix-canvas"></canvas>
 
-canvas.width =
-window.innerWidth;
 
-canvas.height =
-window.innerHeight;
+<div class="matrix-ui">
 
-}
 
-
-resize();
-
-
-window.addEventListener(
-"resize",
-resize
-);
-
-
-
-const chars =
-"01ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオカキクケコ";
-
-
-const fontSize=18;
-
-
-let columns =
-Math.floor(
-canvas.width/fontSize
-);
-
-
-let drops=[];
-
-
-
-function reset(){
-
-columns =
-Math.floor(
-canvas.width/fontSize
-);
-
-
-drops=[];
-
-
-for(
-let i=0;
-i<columns;
-i++
-){
-
-drops[i]=1;
-
-}
-
-}
-
-
-reset();
-
-
-
-function draw(){
-
-
-ctx.fillStyle=
-"rgba(0,0,0,0.08)";
-
-
-ctx.fillRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-
-
-ctx.fillStyle=
-"#00ff41";
-
-
-ctx.font=
-fontSize+
-"px monospace";
-
-
-
-drops.forEach(
-(y,index)=>{
-
-
-const text =
-chars[
-Math.floor(
-Math.random()*chars.length
-)
-];
-
-
-
-ctx.fillText(
-
-text,
-
-index*fontSize,
-
-y*fontSize
-
-);
-
-
-
-if(
-y*fontSize >
-canvas.height
-&&
-Math.random()>0.975
-){
-
-drops[index]=0;
-
-}
-
-
-drops[index]++;
-
-
-
-});
-
-
-}
-
-
-
-setInterval(
-draw,
-50
-);
-
-
-
-}
-
-
-
-/*启动 Matrix*/
-
-initMatrix();
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   02 MATRIX进入按钮
-===================================================== */
-
-
-const enter =
-document.getElementById(
-"enter-system"
-);
-
-
-
-if(enter){
-
-
-enter.onclick=()=>{
-
-
-const matrix =
-document.getElementById(
-"matrix-intro"
-);
-
-
-
-if(matrix){
-
-
-matrix.style.transition=
-"opacity 1.5s";
-
-
-matrix.style.opacity="0";
-
-
-
-setTimeout(()=>{
-
-
-matrix.remove();
-
-
-
-startCRTBoot();
-
-
-
-},1500);
-
-
-
-}
-
-
-};
-
-
-}
-
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   03 CRT系统启动
-===================================================== */
-
-
-function startCRTBoot(){
-
-
-
-const boot =
-document.getElementById(
-"boot-screen"
-);
-
-
-
-if(!boot)return;
-
-
-
-setTimeout(()=>{
-
-
-boot.style.transition=
-"opacity .8s";
-
-
-boot.style.opacity="0";
-
-
-
-setTimeout(()=>{
-
-
-boot.style.display="none";
-
-
-},
-800);
-
-
-
-},
-3000);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   04 系统时间
-===================================================== */
-
-
-const clock =
-document.getElementById(
-"clock"
-);
-
-
-
-function updateClock(){
-
-
-if(!clock)return;
-
-
-
-clock.innerText =
-new Date()
-.toLocaleTimeString(
-"zh-CN",
-{
-hour12:false
-}
-);
-
-
-}
-
-
-
-setInterval(
-updateClock,
-1000
-);
-
-
-
-updateClock();
-
-
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   05 页面切换系统
-===================================================== */
-
-
-const pages =
-document.querySelectorAll(
-".page"
-);
-
-
-
-function openPage(id){
-
-
-
-pages.forEach(
-page=>{
-
-
-page.classList.add(
-"hidden"
-);
-
-
-});
-
-
-
-const target =
-document.getElementById(
-id
-);
-
-
-
-if(target){
-
-target.classList.remove(
-"hidden"
-);
-
-}
-
-
-}
-
-
-
-
-
-
-
-const icons =
-document.querySelectorAll(
-".pixel-icon"
-);
-
-
-
-icons.forEach(
-icon=>{
-
-
-icon.onclick=()=>{
-
-
-openPage(
-icon.dataset.page
-);
-
-
-};
-
-
-});
-
-
-
-
-
-
-
-
-const menuMap={
-
-
-"首页":"home",
-
-"博客":"blog",
-
-"作品":"works",
-
-"关于":"about",
-
-"留言":"message"
-
-
-};
-
-
-
-
-document
-.querySelectorAll(
-".menu-bar span"
-)
-.forEach(
-btn=>{
-
-
-btn.onclick=()=>{
-
-
-openPage(
-menuMap[
-btn.innerText
-]
-);
-
-
-};
-
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   06 窗口系统
-===================================================== */
-
-
-document
-.querySelectorAll(
-".close"
-)
-.forEach(
-btn=>{
-
-
-btn.onclick=()=>{
-
-
-const win =
-btn.closest(
-".window"
-);
-
-
-
-if(win){
-
-win.style.display=
-"none";
-
-}
-
-
-};
-
-
-});
-
-
-
-
-
-document
-.querySelectorAll(
-".minimize"
-)
-.forEach(
-btn=>{
-
-
-btn.onclick=()=>{
-
-
-const win =
-btn.closest(
-".window"
-);
-
-
-
-win.style.opacity=0;
-
-
-setTimeout(()=>{
-
-
-win.style.display=
-"none";
-
-
-},300);
-
-
-
-};
-
-
-
-});
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   07 窗口拖拽
-===================================================== */
-
-
-document
-.querySelectorAll(
-".window"
-)
-.forEach(
-win=>{
-
-
-const bar =
-win.querySelector(
-".window-header"
-);
-
-
-
-if(!bar)return;
-
-
-
-let moving=false;
-
-let x=0;
-
-let y=0;
-
-
-
-bar.onmousedown=(e)=>{
-
-
-moving=true;
-
-
-x=
-e.clientX-
-win.offsetLeft;
-
-
-y=
-e.clientY-
-win.offsetTop;
-
-
-};
-
-
-
-
-document.onmousemove=(e)=>{
-
-
-if(!moving)return;
-
-
-
-win.style.left=
-e.clientX-x+
-"px";
-
-
-win.style.top=
-e.clientY-y+
-"px";
-
-
-
-};
-
-
-
-document.onmouseup=()=>{
-
-
-moving=false;
-
-
-};
-
-
-
-});
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   08 博客模拟数据
-===================================================== */
-
-
-function loadBlogs(){
-
-
-
-const box =
-document.getElementById(
-"blog-list"
-);
-
-
-
-if(!box)return;
-
-
-
-const blogs=[
-
-
-{
-
-title:
-"建立我的数字空间",
-
-status:
-"active"
-
-},
-
-
-{
-
-title:
-"Y2K视觉实验记录",
-
-status:
-"ok"
-
-}
-
-
-
-];
-
-
-
-box.innerHTML="";
-
-
-
-blogs.forEach(
-(blog,i)=>{
-
-
-box.innerHTML+=`
-
-<div class="blog-item">
-
-编号:
-00${i+1}
-
-<br>
-
-标题:
-${blog.title}
-
-<br>
-
-状态:
-${blog.status}
-
-</div>
-
-<hr>
-
-`;
-
-
-});
-
-
-}
-
-
-
-loadBlogs();
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   09 作品展示
-===================================================== */
-
-
-function loadWorks(){
-
-
-
-const box =
-document.getElementById(
-"works-list"
-);
-
-
-
-if(!box)return;
-
-
-
-const works=[
-
-
-"assets/work01.jpg",
-
-"assets/work02.jpg",
-
-"assets/work03.jpg"
-
-
-];
-
-
-
-works.forEach(
-(img,i)=>{
-
-
-box.innerHTML+=`
-
-<div class="work-item"
-data-image="${img}">
-
-
-<img src="${img}">
+<h1>
+陈昊天数字空间
+</h1>
 
 
 <p>
-
-作品_${i+1}
-
+DIGITAL SPACE OPERATING SYSTEM
 </p>
 
 
+<p>
+正在建立数字身份...
+</p>
+
+
+
+<button id="enter-system">
+
+进入数字空间
+
+</button>
+
+
 </div>
 
 
-`;
+</section>
 
 
 
-});
 
 
+<!-- ==========================
+ CRT启动界面
+========================== -->
 
-}
 
+<section id="boot-screen">
 
 
-loadWorks();
+<div class="boot-window">
 
 
+<div class="window-title">
 
+系统启动程序 SYSTEM BOOT
 
+</div>
 
 
 
+<div id="boot-text">
 
 
-/* =====================================================
-   10 图片查看器
-===================================================== */
+&gt; 初始化中文数字空间...<br>
 
+&gt; 检测用户身份...<br>
 
-const viewer =
-document.getElementById(
-"image-viewer"
-);
+&gt; 加载视觉模块...<br>
 
+&gt; 开启CRT显示模式...<br>
 
-const viewerImg =
-document.getElementById(
-"viewer-image"
-);
+&gt; 数据连接成功...
 
 
 
-document.onclick=(e)=>{
+</div>
 
 
-const item =
-e.target.closest(
-".work-item"
-);
 
+<div class="loading-bar">
 
+<div class="loading-progress">
 
-if(!item)return;
+</div>
 
+</div>
 
 
-viewerImg.src=
-item.dataset.image;
 
+</div>
 
 
-viewer.classList.remove(
-"hidden"
-);
+</section>
 
 
 
-};
 
 
 
 
-const closeViewer =
-document.querySelector(
-".close-viewer"
-);
+<!-- ==========================
+ CRT桌面
+========================== -->
 
 
+<div id="desktop">
 
-if(closeViewer){
 
 
-closeViewer.onclick=()=>{
 
 
-viewer.classList.add(
-"hidden"
-);
+<!-- 顶部菜单 -->
 
 
-};
+<header class="menu-bar">
 
 
-}
+<div class="menu-logo">
 
+◉ 陈昊天 OS
 
+</div>
 
 
 
+<nav>
 
 
+<span>首页</span>
 
+<span>博客</span>
 
+<span>作品</span>
 
+<span>关于</span>
 
-/* =====================================================
-   11 评论系统
-===================================================== */
+<span>留言</span>
 
 
-const send =
-document.getElementById(
-"send-comment"
-);
+</nav>
 
 
 
-if(send){
+</header>
 
 
-send.onclick=()=>{
 
 
-const input =
-document.getElementById(
-"comment-input"
-);
 
 
 
-const list =
-document.getElementById(
-"comment-list"
-);
 
+<!-- 桌面图标 -->
 
 
-if(!input.value)return;
+<div class="desktop-icons">
 
 
 
-list.innerHTML+=`
+<div class="pixel-icon"
+data-page="home">
 
-<p>
+<div class="icon-image">
+
+💻
+
+</div>
+
+主页.exe
+
+</div>
+
+
+
+
+
+<div class="pixel-icon"
+data-page="blog">
+
+<div class="icon-image">
+
+📟
+
+</div>
+
+博客.log
+
+</div>
+
+
+
+
+
+
+<div class="pixel-icon"
+data-page="works">
+
+<div class="icon-image">
+
+📁
+
+</div>
+
+作品库.dir
+
+</div>
+
+
+
+
+
+
+<div class="pixel-icon"
+data-page="about">
+
+<div class="icon-image">
+
+👤
+
+</div>
+
+用户档案.cfg
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ==========================
+主窗口
+========================== -->
+
+
+<section class="window main-window">
+
+
+
+<div class="window-header">
+
+
+<span>
+
+PERSONAL_OS.exe
+
+</span>
+
+
+<div>
+
+
+<button class="minimize">
+
+—
+
+</button>
+
+
+<button class="close">
+
+×
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="window-menu">
+
+文件　编辑　查看　数据　工具　窗口　帮助
+
+</div>
+
+
+
+
+
+
+<div class="window-content">
+
+
+
+
+
+<!-- 首页 -->
+
+
+<section id="home"
+class="page">
+
+
+
+<h2>
+
+欢迎进入我的数字空间
+
+</h2>
+
+
+<div class="terminal">
+
 
 USER:
 
-${input.value}
+陈昊天
+
+<br>
+
+
+STATUS:
+
+ONLINE
+
+<br>
+
+
+SYSTEM:
+
+Y2K CRT MODE
+
+<br>
+
+
+MEMORY:
+
+98%
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- 博客 -->
+
+
+<section id="blog"
+class="page hidden">
+
+
+
+<div class="terminal">
+
+
+<div class="terminal-header">
+
+博客数据库 BLOG_DATABASE
+
+</div>
+
+
+
+<div id="blog-list">
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- 作品 -->
+
+
+<section id="works"
+class="page hidden">
+
+
+
+<div class="file-manager">
+
+
+<h3>
+
+作品提取器 IMAGE EXTRACTOR
+
+</h3>
+
+
+
+<div id="works-list"
+class="file-grid">
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 关于 -->
+
+
+<section id="about"
+class="page hidden">
+
+
+
+<div class="config-window">
+
+
+
+<h2>
+
+用户档案 USER_PROFILE
+
+</h2>
+
+
+
+<p>
+
+姓名：陈昊天
 
 </p>
 
-`;
+
+<p>
+
+身份：数字创作者
+
+</p>
 
 
 
-input.value="";
+<h3>
+
+技能
+
+</h3>
 
 
 
-/*
+<p>
 
-未来:
+HTML █████████ 90%
 
-Supabase:
-
-comments.insert()
-
-*/
+</p>
 
 
-};
+<p>
+
+CSS ████████ 85%
+
+</p>
 
 
-}
+<p>
 
+JavaScript ███████ 75%
 
-
-
-
-
+</p>
 
 
 
-/* =====================================================
-   12 Supabase接口预留
-===================================================== */
+<h3>
 
+目标
 
-/*
-
-未来接入：
-
-supabase.from("posts")
-
-supabase.from("works")
-
-supabase.from("comments")
-
-
-*/
+</h3>
 
 
 
-console.log(
-"PERSONAL_OS SYSTEM ONLINE"
-);
+<ul>
+
+
+<li>
+创造个人数字世界
+</li>
+
+
+<li>
+探索未来视觉语言
+</li>
+
+
+<li>
+保存互联网记忆
+</li>
+
+
+</ul>
 
 
 
-});
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 留言 -->
+
+
+<section id="message"
+class="page hidden">
+
+
+
+<div class="terminal">
+
+
+<h3>
+
+访客留言系统
+
+</h3>
+
+
+<div id="comment-list">
+
+等待留言...
+
+</div>
+
+
+
+<textarea id="comment-input"
+placeholder="输入留言">
+
+</textarea>
+
+
+<button id="send-comment">
+
+发送
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- 图片查看器 -->
+
+
+<div id="image-viewer"
+class="window hidden">
+
+
+
+<div class="window-header">
+
+
+图片查看器
+
+
+<button class="close-viewer">
+
+×
+
+</button>
+
+
+</div>
+
+
+<img id="viewer-image">
+
+
+<p id="viewer-description">
+
+图片信息
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- 状态栏 -->
+
+
+<footer class="status-bar">
+
+
+<div>
+
+系统运行正常
+
+</div>
+
+
+
+<div id="clock">
+
+00:00:00
+
+</div>
+
+
+
+</footer>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="app.js"></script>
+
+
+
+</body>
+
+
 </html>
