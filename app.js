@@ -1109,3 +1109,47 @@ checkAdmin();
 
 
 });
+
+const enterButton =
+document.getElementById(
+"enter-system"
+);
+
+
+
+if(enterButton){
+
+
+enterButton.onclick=()=>{
+
+
+const intro =
+document.getElementById(
+"matrix-intro"
+);
+
+
+
+intro.style.transition=
+"opacity 1.5s";
+
+
+intro.style.opacity=0;
+
+
+
+setTimeout(()=>{
+
+
+intro.remove();
+
+
+
+},1500);
+
+
+
+};
+
+
+}
