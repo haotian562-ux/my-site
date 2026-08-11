@@ -1,13 +1,18 @@
 :root{
 
---green:#00ff41;
---dark:#050505;
---green2:#003b00;
---white:#eaffea;
 
---pixel:
-'Press Start 2P',
-monospace;
+--bg:#080909;
+
+--panel:#151819;
+
+--white:#eeeeee;
+
+--gray:#8c9297;
+
+--green:#00ff88;
+
+--blue:#00d9ff;
+
 
 }
 
@@ -15,9 +20,11 @@ monospace;
 
 *{
 
-margin:0;
-padding:0;
 box-sizing:border-box;
+
+margin:0;
+
+padding:0;
 
 }
 
@@ -25,16 +32,21 @@ box-sizing:border-box;
 
 body{
 
-background:#000;
 
-color:var(--green);
+background:
+var(--bg);
 
-font-family:var(--pixel);
+color:
+var(--white);
+
+font-family:
+
+"Noto Sans SC",
+sans-serif;
+
 
 overflow:hidden;
 
-width:100vw;
-height:100vh;
 
 }
 
@@ -42,78 +54,34 @@ height:100vh;
 
 
 
-/* =========================
-CRT扫描线
-========================= */
+/* CRT */
 
 
-.crt-overlay{
+.crt{
+
 
 position:fixed;
 
 inset:0;
 
+
 background:
 
 linear-gradient(
-rgba(18,16,16,0) 50%,
-rgba(0,0,0,.25) 50%
-),
-
-linear-gradient(
-90deg,
-rgba(255,0,0,.05),
-rgba(0,255,0,.03),
-rgba(0,0,255,.05)
+rgba(255,255,255,.03) 50%,
+transparent 50%
 );
 
 
 background-size:
 
-100% 4px,
-6px 100%;
+100% 4px;
 
 
 pointer-events:none;
 
-z-index:9999;
+z-index:999;
 
-animation:flicker .15s infinite;
-
-}
-
-
-
-.crt-vignette{
-
-position:fixed;
-
-inset:0;
-
-background:
-
-radial-gradient(
-circle,
-transparent 60%,
-rgba(0,0,0,.8)
-);
-
-
-pointer-events:none;
-
-z-index:9998;
-
-}
-
-
-
-@keyframes flicker{
-
-50%{
-
-opacity:.96;
-
-}
 
 }
 
@@ -121,42 +89,48 @@ opacity:.96;
 
 
 
-/* =========================
-Matrix入口
-========================= */
+/* MATRIX */
 
 
 #matrix-intro{
 
+
 position:fixed;
 
 inset:0;
 
-background:black;
+background:#000;
 
-z-index:10000;
 
 display:flex;
 
+justify-content:center;
+
 align-items:center;
 
-justify-content:center;
+
+z-index:100;
+
 
 }
 
 
+#matrix{
 
-#matrix-canvas{
 
 position:absolute;
 
-inset:0;
+width:100%;
+
+height:100%;
+
 
 }
 
 
 
-.matrix-ui{
+.matrix-panel{
+
 
 position:relative;
 
@@ -164,43 +138,48 @@ z-index:2;
 
 text-align:center;
 
-color:#00ff41;
+font-family:
 
-text-shadow:
+Orbitron;
 
-0 0 15px #00ff41;
+
+color:
+
+var(--green);
+
 
 }
 
 
 
-.matrix-ui h1{
+.matrix-panel h1{
 
-font-size:30px;
 
-margin-bottom:40px;
+font-size:40px;
 
 }
 
 
 
-.matrix-ui button{
+button{
 
 
-background:black;
+margin-top:30px;
+
+padding:15px 40px;
+
+
+background:none;
+
 
 border:
 
-2px solid #00ff41;
+1px solid var(--green);
 
 
-color:#00ff41;
+color:
 
-
-padding:20px 40px;
-
-
-font-family:var(--pixel);
+var(--green);
 
 
 cursor:pointer;
@@ -209,351 +188,28 @@ cursor:pointer;
 }
 
 
-.matrix-ui button:hover{
 
 
-background:#00ff41;
 
-color:black;
-
-
-}
-
-
-
-
-
-/* =========================
-启动界面
-========================= */
-
-
-#boot-screen{
-
-position:fixed;
-
-inset:0;
-
-background:#000;
-
-z-index:9000;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-}
-
-
-
-.boot-window{
-
-
-border:
-
-2px solid var(--green);
-
-
-padding:30px;
-
-
-box-shadow:
-
-0 0 30px var(--green);
-
-
-}
-
-
-
-.loading-bar{
-
-height:20px;
-
-border:
-
-2px solid var(--green);
-
-margin-top:20px;
-
-
-}
-
-
-
-.loading-progress{
-
-height:100%;
-
-background:var(--green);
-
-
-animation:
-
-loading 3s forwards;
-
-
-}
-
-
-@keyframes loading{
-
-to{
-
-width:100%;
-
-}
-
-}
-
-
-
-
-
-
-/* =========================
-桌面
-========================= */
-
-
-#desktop{
-
-
-display:flex;
-
-flex-direction:column;
-
-height:100vh;
-
-}
-
-
-
-
-
-.menu-bar{
-
-
-height:40px;
-
-
-background:
-
-#003b00;
-
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-
-padding:10px;
-
-
-}
-
-
-
-.menu-bar span{
-
-
-cursor:pointer;
-
-margin-left:20px;
-
-}
-
-
-.menu-bar span:hover{
-
-
-color:white;
-
-text-shadow:
-
-0 0 10px white;
-
-}
-
-
-
-
-
-/* =========================
-图标
-========================= */
-
-
-.desktop-icons{
-
-
-display:flex;
-
-gap:30px;
-
-padding:20px;
-
-
-}
-
-
-
-.pixel-icon{
-
-
-cursor:pointer;
-
-width:90px;
-
-text-align:center;
-
-
-}
-
-
-.pixel-icon:hover{
-
-
-background:
-
-rgba(0,255,65,.2);
-
-
-}
-
-
-
-
-
-/* =========================
-窗口
-========================= */
-
-
-.window{
-
-
-border:
-
-2px solid var(--green);
-
-
-background:
-
-rgba(0,0,0,.9);
-
-
-box-shadow:
-
-0 0 20px var(--green);
-
-
-}
-
-
-
-.main-window{
-
-
-margin:10px;
-
-flex:1;
-
-
-}
-
-
-
-.window-header{
-
-
-background:var(--green);
-
-
-color:#000;
-
-
-padding:8px;
-
-
-display:flex;
-
-justify-content:space-between;
-
-
-cursor:move;
-
-
-}
-
-
-
-.window-header button{
-
-
-background:black;
-
-color:var(--green);
-
-border:1px solid var(--green);
-
-
-}
-
-
-
-
-.window-menu{
-
-
-background:#003b00;
-
-padding:8px;
-
-}
-
-
-
-
-
-.window-content{
-
-
-padding:20px;
-
-overflow:auto;
-
-
-}
-
-
-
-
-
-/* =========================
-页面
-========================= */
-
-
-.page{
-
-
-display:block;
-
-
-}
-
-
-
-.page.hidden{
+.hidden{
 
 
 display:none;
 
+}
+
+
+
+
+
+/* SYSTEM */
+
+
+#system{
+
+
+height:100vh;
+
 
 }
 
@@ -561,13 +217,202 @@ display:none;
 
 
 
-
-/* =========================
-终端
-========================= */
+.topbar{
 
 
-.terminal{
+height:60px;
+
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+
+padding:20px;
+
+
+border-bottom:
+
+1px solid #333;
+
+
+font-family:
+
+Orbitron;
+
+
+}
+
+
+
+nav span{
+
+
+margin-left:25px;
+
+cursor:pointer;
+
+
+}
+
+
+
+nav span:hover{
+
+
+color:
+
+var(--green);
+
+
+}
+
+
+
+
+
+.archive-window{
+
+
+margin:30px;
+
+
+height:80%;
+
+
+border:
+
+1px solid #444;
+
+
+background:
+
+var(--panel);
+
+
+}
+
+
+
+
+
+.window-title{
+
+
+padding:15px;
+
+
+border-bottom:
+
+1px solid #444;
+
+
+display:flex;
+
+justify-content:space-between;
+
+
+}
+
+
+
+
+
+.content{
+
+
+height:calc(100% - 50px);
+
+padding:30px;
+
+
+}
+
+
+
+
+
+/* HUD */
+
+
+.hud{
+
+
+height:100%;
+
+display:grid;
+
+place-items:center;
+
+position:relative;
+
+
+}
+
+
+
+.hud img{
+
+
+width:280px;
+
+height:280px;
+
+object-fit:cover;
+
+
+filter:
+
+grayscale(1);
+
+
+border:
+
+1px solid var(--green);
+
+
+}
+
+
+
+
+
+.info{
+
+
+position:absolute;
+
+top:20px;
+
+left:20px;
+
+
+font-family:
+
+JetBrains Mono;
+
+
+color:
+
+var(--green);
+
+
+}
+
+
+
+
+
+.data-box{
+
+
+position:absolute;
+
+bottom:20px;
+
+right:20px;
 
 
 border:
@@ -578,7 +423,52 @@ border:
 padding:20px;
 
 
-line-height:2;
+}
+
+
+
+
+
+.scan{
+
+
+position:absolute;
+
+
+width:80%;
+
+height:2px;
+
+
+background:
+
+var(--green);
+
+
+animation:
+
+scan 3s infinite;
+
+
+}
+
+
+
+@keyframes scan{
+
+
+from{
+
+top:10%;
+
+}
+
+
+to{
+
+top:90%;
+
+}
 
 
 }
@@ -587,20 +477,15 @@ line-height:2;
 
 
 
-/* =========================
-作品
-========================= */
 
-
-.file-grid{
+.grid{
 
 
 display:grid;
 
-
 grid-template-columns:
 
-repeat(auto-fit,minmax(150px,1fr));
+repeat(auto-fit,minmax(200px,1fr));
 
 
 gap:20px;
@@ -610,25 +495,21 @@ gap:20px;
 
 
 
-.work-item{
+.work{
 
 
 border:
 
-1px solid var(--green);
+1px solid #555;
 
 
 padding:10px;
 
 
-cursor:pointer;
-
-
 }
 
 
-
-.work-item img{
+.work img{
 
 
 width:100%;
@@ -640,79 +521,82 @@ width:100%;
 
 
 
-/* =========================
-图片窗口
-========================= */
+.blog-item{
 
 
-.image-viewer{
+border-bottom:
+
+1px solid #444;
+
+
+padding:20px;
+
+
+}
+
+
+
+
+
+.skill{
+
+
+margin:20px 0;
+
+
+}
+
+
+.skill div{
+
+
+height:10px;
+
+border:
+
+1px solid #555;
+
+
+}
+
+
+.skill span{
+
+
+display:block;
+
+height:100%;
+
+
+background:
+
+var(--green);
+
+
+}
+
+
+
+
+
+footer{
 
 
 position:fixed;
 
-top:50%;
+bottom:0;
 
-left:50%;
+left:0;
 
-
-transform:
-
-translate(-50%,-50%);
+right:0;
 
 
-width:80%;
-
-height:80%;
+padding:10px;
 
 
-z-index:5000;
+border-top:
 
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-
-}
-
-
-
-.image-viewer img{
-
-
-max-width:90%;
-
-max-height:80%;
-
-
-}
-
-
-
-
-.hidden{
-
-display:none!important;
-
-}
-
-
-
-
-/* =========================
-状态栏
-========================= */
-
-
-.status-bar{
-
-
-height:30px;
-
-
-background:#003b00;
+1px solid #333;
 
 
 display:flex;
@@ -720,37 +604,26 @@ display:flex;
 justify-content:space-between;
 
 
-padding:5px 15px;
-
-
 }
 
 
 
+@media(max-width:700px){
 
 
+.archive-window{
 
-
-/* =========================
-手机适配
-========================= */
-
-
-@media(max-width:600px){
-
-
-.matrix-ui h1{
-
-font-size:18px;
+margin:10px;
 
 }
 
 
-.desktop-icons{
+nav{
 
-flex-wrap:wrap;
+display:none;
 
 }
+
 
 
 }
